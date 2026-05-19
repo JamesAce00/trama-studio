@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import RubricaGrid from '../components/RubricaGrid.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latestPosts = sortedPosts.slice(0, 6);
+---
+
+<BaseLayout title="TRAMA Studio" description="Divulgazione sulla cultura tessile. Materiali, filiere, storia dei tessuti, etichette e qualità con rigore e autorevolezza.">
+
+  <!-- Hero -->
+  <section class="bg-nero text-bianco py-24 md:py-36 px-6 md:px-10">
+    <div class="max-w-content mx-auto">
+      <p class="occhiello text-terracotta mb-8">Divulgazione tessile</p>
+      <h1 class="text-bianco mb-6 max-w-3xl" style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.02em;">
+        Capire i tessuti<br />per capire cosa indossiamo
+      </h1>
+      <p class="max-w-xl" style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 20px; line-height: 1.6; color: #D8C7B8;">
+        TRAMA Studio racconta materiali, filiere, storia dei tessuti e qualità con rigore e autorevolezza. Non è moda. È cultura tessile.
+      </p>
+      <div class="mt-10 flex gap-6 flex-wrap">
+        <a
+          href="/blog"
+          class="occhiello text-bianco border border-bianco px-5 py-3 hover:bg-bianco hover:text-nero transition-colors duration-200"
+          style="font-size: 11px;"
+        >
+          Esplora gli articoli
+        </a>
+        <a
+          href="/about"
+          class="occhiello text-grigio hover:text-bianco transition-colors duration-200"
+          style="font-size: 11px; padding: 12px 0;"
+        >
+          Chi siamo →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ultimi articoli -->
+  <section class="py-20 px-6 md:px-10">
+    <div class="max-w-content mx-auto">
+      <div class="flex items-baseline justify-between mb-12">
+        <div>
+          <p class="occhiello text-grigio mb-2">Dal blog</p>
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 32px; letter-spacing: -0.01em; line-height: 1.2;">Ultimi articoli</h2>
+        </div>
+        <a href="/blog" class="occhiello text-terracotta hover:underline underline-offset-2 hidden md:block" style="font-size: 10px;">
+          Tutti gli articoli →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16">
+        {latestPosts.map(post => (
+          <ArticleCard
+            title={post.data.title}
+            rubrica={post.data.rubrica}
+            lead={post.data.lead}
+            date={post.data.date}
+            slug={post.slug}
+          />
+        ))}
+      </div>
+
+      <div class="mt-10 md:hidden">
+        <a href="/blog" class="occhiello text-terracotta hover:underline underline-offset-2" style="font-size: 10px;">
+          Tutti gli articoli →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divisore -->
+  <hr class="separator mx-6 md:mx-10" />
+
+  <!-- Rubriche -->
+  <section class="py-20 px-6 md:px-10">
+    <div class="max-w-content mx-auto mb-12">
+      <p class="occhiello text-grigio mb-2">Cosa trovi su TRAMA</p>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 32px; letter-spacing: -0.01em; line-height: 1.2;">Le rubriche</h2>
+    </div>
+  </section>
+
+  <div class="max-w-content mx-auto px-6 md:px-10 pb-20">
+    <RubricaGrid />
+  </div>
+
+  <!-- Manifesto -->
+  <section class="bg-marrone text-bianco py-20 px-6 md:px-10">
+    <div class="max-w-editorial mx-auto">
+      <p class="occhiello text-sabbia mb-6">Il nostro approccio</p>
+      <blockquote style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 26px; line-height: 1.45; color: #F5F1EA; border-left: 2px solid #A65A3A; padding-left: 1.5rem;">
+        Rendere le persone consapevoli di ciò che comprano e indossano. Con rigore, senza moralismo. Con autorevolezza, senza accademia.
+      </blockquote>
+      <div class="mt-8 pl-6">
+        <a href="/about" class="occhiello text-sabbia hover:text-bianco transition-colors" style="font-size: 10px;">
+          Leggi il manifesto editoriale →
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

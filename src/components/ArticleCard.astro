@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  rubrica: string;
+  lead: string;
+  date: Date;
+  slug: string;
+}
+
+const { title, rubrica, lead, date, slug } = Astro.props;
+
+const verdeRubriche = ['TRAME DI STORIA', 'DALLA FILIERA'];
+const isVerde = verdeRubriche.includes(rubrica);
+
+const formattedDate = date.toLocaleDateString('it-IT', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<article class="card-hover group py-8 border-b" style="border-color: #D8C7B8; border-width: 0.5px;">
+  <a href={`/blog/${slug}`} class="block">
+    <span
+      class={`occhiello ${isVerde ? 'rubrica-verde' : 'rubrica-terracotta'} block mb-3`}
+    >
+      {rubrica}
+    </span>
+
+    <h2 class="card-title font-cormorant font-light text-nero transition-colors duration-200 mb-3" style="font-size: 28px; line-height: 1.25; letter-spacing: -0.01em; font-family: 'Cormorant Garamond', serif;">
+      {title}
+    </h2>
+
+    <p class="lead-text text-sm mb-4" style="font-size: 17px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; color: #5C4033; line-height: 1.5;">
+      {lead}
+    </p>
+
+    <div class="flex items-center justify-between">
+      <time class="didascalia" datetime={date.toISOString()}>
+        {formattedDate}
+      </time>
+      <span class="occhiello text-terracotta group-hover:underline underline-offset-2" style="font-size: 10px; letter-spacing: 0.12em;">
+        Leggi →
+      </span>
+    </div>
+  </a>
+</article>

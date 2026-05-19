@@ -1,0 +1,74 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/images
+public_folder: /images
+
+locale: it
+
+collections:
+  - name: blog
+    label: Articoli
+    label_singular: Articolo
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields:
+      - label: Titolo
+        name: title
+        widget: string
+        hint: "Il titolo dell'articolo, possibilmente evocativo e preciso"
+
+      - label: Data di pubblicazione
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+        default: ""
+
+      - label: Rubrica
+        name: rubrica
+        widget: select
+        options:
+          - label: "MATERIA PRIMA"
+            value: "MATERIA PRIMA"
+          - label: "DENTRO IL CAPO"
+            value: "DENTRO IL CAPO"
+          - label: "DIETRO L'ETICHETTA"
+            value: "DIETRO L'ETICHETTA"
+          - label: "MITI DA SFATARE"
+            value: "MITI DA SFATARE"
+          - label: "GLOSSARIO TESSILE"
+            value: "GLOSSARIO TESSILE"
+          - label: "SCELTE CONSAPEVOLI"
+            value: "SCELTE CONSAPEVOLI"
+          - label: "TRAME DI STORIA"
+            value: "TRAME DI STORIA"
+          - label: "DALLA FILIERA"
+            value: "DALLA FILIERA"
+
+      - label: Lead
+        name: lead
+        widget: text
+        hint: "Testo introduttivo breve (2-3 righe). Apparirà in corsivo prima del corpo dell'articolo e nelle anteprime."
+
+      - label: Autore
+        name: autore
+        widget: string
+        required: false
+        default: "Redazione TRAMA"
+        hint: "Opzionale. Se vuoto, non verrà mostrato."
+
+      - label: Corpo dell'articolo
+        name: body
+        widget: markdown
+        hint: "Scrivi in Markdown. Per i pullquote usa > all'inizio del paragrafo."
+        modes:
+          - raw
+          - rich_text

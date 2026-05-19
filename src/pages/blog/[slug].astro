@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const verdeRubriche = ['TRAME DI STORIA', 'DALLA FILIERA'];
+const isVerde = verdeRubriche.includes(post.data.rubrica);
+
+const formattedDate = post.data.date.toLocaleDateString('it-IT', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={post.data.title} description={post.data.lead}>
+
+  <article>
+    <!-- Back link -->
+    <div class="px-6 md:px-10 pt-10 pb-6">
+      <div class="max-w-content mx-auto">
+        <a
+          href="/blog"
+          class="didascalia text-grigio hover:text-terracotta transition-colors"
+          style="letter-spacing: 0.04em;"
+        >
+          ← Torna al blog
+        </a>
+      </div>
+    </div>
+
+    <!-- Header articolo -->
+    <header class="px-6 md:px-10 pb-12 border-b" style="border-color: #D8C7B8; border-width: 0.5px;">
+      <div class="max-w-editorial mx-auto">
+        <span class={`occhiello block mb-4 ${isVerde ? 'text-verde' : 'text-terracotta'}`}>
+          {post.data.rubrica}
+        </span>
+
+        <h1 class="text-nero mb-6">
+          {post.data.title}
+        </h1>
+
+        <div class="flex items-center gap-4 mb-8">
+          <time class="didascalia" datetime={post.data.date.toISOString()}>
+            {formattedDate}
+          </time>
+          {post.data.autore && (
+            <>
+              <span class="didascalia" style="color: #D8C7B8;">—</span>
+              <span class="didascalia">{post.data.autore}</span>
+            </>
+          )}
+        </div>
+
+        <p class="lead-text">
+          {post.data.lead}
+        </p>
+      </div>
+    </header>
+
+    <!-- Corpo articolo -->
+    <div class="px-6 md:px-10 py-14">
+      <div class="max-w-editorial mx-auto prose-editorial">
+        <Content />
+      </div>
+    </div>
+
+    <!-- Footer articolo -->
+    <footer class="px-6 md:px-10 py-10 border-t" style="border-color: #D8C7B8; border-width: 0.5px;">
+      <div class="max-w-editorial mx-auto flex justify-between items-center">
+        <a
+          href="/blog"
+          class="occhiello text-grigio hover:text-terracotta transition-colors"
+          style="font-size: 10px;"
+        >
+          ← Tutti gli articoli
+        </a>
+        <span class={`occhiello ${isVerde ? 'text-verde' : 'text-terracotta'}`} style="font-size: 10px;">
+          {post.data.rubrica}
+        </span>
+      </div>
+    </footer>
+  </article>
+
+</BaseLayout>

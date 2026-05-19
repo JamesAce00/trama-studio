@@ -1,0 +1,59 @@
+---
+const rubriche = [
+  {
+    nome: 'MATERIA PRIMA',
+    descrizione: 'Le fibre al centro. Cotone, lana, lino, seta, sintetici: da dove vengono, come si producono, cosa significano sul corpo.',
+    verde: false,
+  },
+  {
+    nome: 'DENTRO IL CAPO',
+    descrizione: 'Anatomia di un indumento. Costruzione, cuciture, fodere, rifiniture: tutto ciò che non si vede ma si sente.',
+    verde: false,
+  },
+  {
+    nome: 'DIETRO L\'ETICHETTA',
+    descrizione: 'Cosa c\'è scritto davvero su quel cartellino. Composizioni, certificazioni, paesi di produzione: imparare a leggere.',
+    verde: false,
+  },
+  {
+    nome: 'MITI DA SFATARE',
+    descrizione: 'Le credenze più diffuse sul tessile, smontate con rigore. Il cotone sempre traspirante, la lana che punge, il naturale sempre meglio.',
+    verde: false,
+  },
+  {
+    nome: 'GLOSSARIO TESSILE',
+    descrizione: 'Un vocabolario per capire. Termini tecnici spiegati senza semplificazioni eccessive, con contesto e precisione.',
+    verde: false,
+  },
+  {
+    nome: 'SCELTE CONSAPEVOLI',
+    descrizione: 'Come orientarsi negli acquisti con più criterio. Non greenwashing, non moralismo: strumenti concreti per decidere meglio.',
+    verde: false,
+  },
+  {
+    nome: 'TRAME DI STORIA',
+    descrizione: 'I tessuti come documenti storici. Commercio, potere, cultura e identità raccontati attraverso i fili.',
+    verde: true,
+  },
+  {
+    nome: 'DALLA FILIERA',
+    descrizione: 'Dentro i distretti, le manifatture, le aziende che fanno davvero i tessuti. Storie di luoghi e persone.',
+    verde: true,
+  },
+];
+---
+
+<div id="rubriche" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px" style="background-color: #D8C7B8;">
+  {rubriche.map(rubrica => (
+    <div class="bg-bianco p-6 hover:bg-nero hover:text-bianco transition-colors duration-300 group cursor-default">
+      <span
+        class={`occhiello block mb-3 ${rubrica.verde ? 'text-verde group-hover:text-verde' : 'text-terracotta group-hover:text-terracotta'}`}
+      >
+        {rubrica.nome}
+      </span>
+      <p class="text-sm leading-relaxed text-grigio group-hover:text-sabbia transition-colors duration-300" style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.6;">
+        {rubrica.descrizione}
+      </p>
+    </div>
+  ))}
+</div>

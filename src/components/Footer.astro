@@ -1,0 +1,30 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t mt-20" style="border-color: #D8C7B8; border-width: 0.5px;">
+  <div class="max-w-content mx-auto px-6 md:px-10 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+      <div>
+        <a href="/" class="flex flex-col leading-none">
+          <span class="logo-trama text-lg text-nero">TRAMA</span>
+          <span class="logo-studio text-[9px] mt-[1px]">studio</span>
+        </a>
+        <p class="didascalia mt-3 max-w-xs">
+          Divulgazione sulla cultura tessile. Materiali, filiere, storia dei tessuti.
+        </p>
+      </div>
+
+      <nav class="flex flex-col md:flex-row gap-4 md:gap-8">
+        <a href="/blog" class="didascalia hover:text-terracotta transition-colors">Blog</a>
+        <a href="/blog#rubriche" class="didascalia hover:text-terracotta transition-colors">Rubriche</a>
+        <a href="/about" class="didascalia hover:text-terracotta transition-colors">About</a>
+        <a href="/admin" class="didascalia hover:text-terracotta transition-colors">Admin</a>
+      </nav>
+    </div>
+
+    <hr class="separator my-8" />
+
+    <p class="didascalia">© {year} TRAMA Studio. Tutti i diritti riservati.</p>
+  </div>
+</footer>
