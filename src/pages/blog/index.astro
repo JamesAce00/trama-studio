@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import NewsletterSection from '../../components/NewsletterSection.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog');
@@ -79,6 +80,9 @@ const rubriche = [
       </div>
     </div>
   </section>
+
+  <!-- Newsletter -->
+  <NewsletterSection />
 
 </BaseLayout>
 

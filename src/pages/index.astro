@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import RubricaGrid from '../components/RubricaGrid.astro';
+import NewsletterSection from '../components/NewsletterSection.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog');
@@ -102,5 +103,8 @@ const latestPosts = sortedPosts.slice(0, 6);
       </div>
     </div>
   </section>
+
+  <!-- Newsletter -->
+  <NewsletterSection />
 
 </BaseLayout>
