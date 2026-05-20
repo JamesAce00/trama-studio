@@ -33,7 +33,7 @@ const currentPath = Astro.url.pathname;
     <button
       class="md:hidden flex flex-col gap-[5px] p-2"
       aria-label="Menu"
-      id="mobile-menu-toggle"
+      id="menu-toggle"
     >
       <span class="block w-5 h-[0.5px] bg-nero"></span>
       <span class="block w-5 h-[0.5px] bg-nero"></span>
@@ -42,25 +42,23 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <div class="md:hidden hidden bg-bianco border-t px-6 py-4 space-y-3" style="border-color: #D8C7B8; border-width: 0.5px;" id="mobile-menu">
-    {navLinks.map(link => (
-      <a href={link.href} class="block text-sm text-nero hover:text-terracotta transition-colors py-1">
-        {link.label}
-      </a>
-    ))}
+    <a href="/" class="block text-sm text-nero hover:text-terracotta transition-colors py-1">Homepage</a>
+    <a href="/blog" class="block text-sm text-nero hover:text-terracotta transition-colors py-1">Blog</a>
+    <a href="/about" class="block text-sm text-nero hover:text-terracotta transition-colors py-1">About</a>
   </div>
 </header>
 
 <script>
-  const toggle = document.getElementById('mobile-menu-toggle');
+  const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
 
-  toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
   });
 
-  menu?.querySelectorAll('a').forEach(link => {
+  menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      menu?.classList.add('hidden');
+      menu.classList.add('hidden');
     });
   });
 </script>
