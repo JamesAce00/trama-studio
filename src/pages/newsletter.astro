@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Newsletter"
+  description="Iscriviti alla newsletter di TRAMA Studio. Ogni settimana un materiale tessile spiegato bene. Gratis, niente spam."
+>
+
+  <section style="background-color: #F5F1EA;" class="py-24 md:py-36 px-6 md:px-10">
+    <div class="max-w-editorial mx-auto">
+
+      <p class="occhiello text-terracotta mb-6">Newsletter</p>
+
+      <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(36px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em; color: #111111; margin-bottom: 1.5rem;">
+        Ogni settimana, un materiale spiegato bene
+      </h1>
+
+      <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 20px; line-height: 1.6; color: #5C4033; margin-bottom: 3rem;">
+        Gratis. Niente spam. Disiscriviti quando vuoi.
+      </p>
+
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mb-12" onsubmit="return false;">
+        <input
+          type="email"
+          placeholder="La tua email"
+          required
+          style="flex: 1; padding: 14px 18px; background: transparent; border: 0.5px solid #A9A29A; color: #111111; font-family: 'Inter', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s;"
+          onfocus="this.style.borderColor='#A65A3A'"
+          onblur="this.style.borderColor='#A9A29A'"
+        />
+        <button
+          type="submit"
+          class="occhiello transition-colors duration-200 hover:opacity-90"
+          style="padding: 14px 28px; background-color: #A65A3A; color: #F5F1EA; font-size: 11px; white-space: nowrap; border: none; cursor: pointer;"
+        >
+          Iscriviti
+        </button>
+      </form>
+
+      <hr style="border: none; border-top: 0.5px solid #D8C7B8; margin-bottom: 2.5rem;" />
+
+      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.25rem;">
+        <li style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span style="color: #A65A3A; font-family: 'Cormorant Garamond', serif; font-size: 20px; flex-shrink: 0; line-height: 1.5;">—</span>
+          <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #5C4033; max-width: none;">
+            <strong style="color: #111111; font-weight: 500;">Un materiale alla volta.</strong> Ogni numero si concentra su un tema: una fibra, un processo, un termine che vale la pena capire davvero.
+          </p>
+        </li>
+        <li style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span style="color: #A65A3A; font-family: 'Cormorant Garamond', serif; font-size: 20px; flex-shrink: 0; line-height: 1.5;">—</span>
+          <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #5C4033; max-width: none;">
+            <strong style="color: #111111; font-weight: 500;">Nessun'agenda commerciale.</strong> TRAMA Studio non vende prodotti, non fa sponsorizzazioni, non spinge verso nessun brand. Solo informazione tessile curata.
+          </p>
+        </li>
+        <li style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span style="color: #A65A3A; font-family: 'Cormorant Garamond', serif; font-size: 20px; flex-shrink: 0; line-height: 1.5;">—</span>
+          <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #5C4033; max-width: none;">
+            <strong style="color: #111111; font-weight: 500;">Leggerla richiede cinque minuti.</strong> È scritta per chi vuole capire, non per chi vuole essere sommerso. Densa il giusto, leggera quanto basta.
+          </p>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+</BaseLayout>

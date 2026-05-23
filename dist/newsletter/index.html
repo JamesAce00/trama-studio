@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="it"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Iscriviti alla newsletter di TRAMA Studio. Ogni settimana un materiale tessile spiegato bene. Gratis, niente spam."><title>Newsletter — TRAMA Studio</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="stylesheet" href="/_astro/about.BikJ7pnA.css"><script type="module" src="/_astro/hoisted.CTKyvsNm.js"></script></head> <body class="bg-bianco text-nero min-h-screen flex flex-col"> <header class="sticky top-0 z-50 bg-bianco border-b" style="border-color: #D8C7B8; border-width: 0.5px;"> <div class="max-w-content mx-auto px-6 md:px-10 flex items-center justify-between h-16"> <!-- Logo --> <a href="/" class="flex flex-col leading-none group" aria-label="TRAMA Studio — Homepage"> <span class="logo-trama text-xl text-nero group-hover:text-terracotta transition-colors duration-200">TRAMA</span> <span class="logo-studio text-[9px] mt-[1px]">studio</span> </a> <!-- Desktop nav --> <nav class="hidden md:flex items-center gap-8"> <a href="/" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-nero hover:text-terracotta"> Home </a><a href="/blog" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-nero hover:text-terracotta"> Blog </a><a href="/blog" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-nero hover:text-terracotta"> Rubriche </a><a href="/glossario" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-nero hover:text-terracotta"> Glossario </a><a href="/newsletter" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-terracotta"> Newsletter </a> </nav> <!-- Hamburger button (mobile only) --> <button id="menu-toggle" class="md:hidden text-2xl leading-none p-2 text-nero" aria-label="Apri menu" aria-expanded="false" type="button">
+☰
+</button> </div> <!-- Mobile menu --> <div id="mobile-menu" class="hidden md:hidden w-full flex-col py-6 px-6 space-y-5" style="background-color: #111111;"> <a href="/" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> Home </a><a href="/blog" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> Blog </a><a href="/blog" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> Rubriche </a><a href="/glossario" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> Glossario </a><a href="/newsletter" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> Newsletter </a> </div> </header> <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('menu-toggle');
+    var menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function () {
+        var isOpen = !menu.classList.contains('hidden');
+        if (isOpen) {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.textContent = '☰';
+        } else {
+          menu.classList.remove('hidden');
+          menu.classList.add('flex');
+          toggle.setAttribute('aria-expanded', 'true');
+          toggle.textContent = '✕';
+        }
+      });
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.textContent = '☰';
+        });
+      });
+    }
+  });
+</script> <main class="flex-1">  <section style="background-color: #F5F1EA;" class="py-24 md:py-36 px-6 md:px-10"> <div class="max-w-editorial mx-auto"> <p class="occhiello text-terracotta mb-6">Newsletter</p> <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(36px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em; color: #111111; margin-bottom: 1.5rem;">
+Ogni settimana, un materiale spiegato bene
+</h1> <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 20px; line-height: 1.6; color: #5C4033; margin-bottom: 3rem;">
+Gratis. Niente spam. Disiscriviti quando vuoi.
+</p> <form class="flex flex-col sm:flex-row gap-3 max-w-md mb-12" onsubmit="return false;"> <input type="email" placeholder="La tua email" required style="flex: 1; padding: 14px 18px; background: transparent; border: 0.5px solid #A9A29A; color: #111111; font-family: 'Inter', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#A65A3A'" onblur="this.style.borderColor='#A9A29A'"> <button type="submit" class="occhiello transition-colors duration-200 hover:opacity-90" style="padding: 14px 28px; background-color: #A65A3A; color: #F5F1EA; font-size: 11px; white-space: nowrap; border: none; cursor: pointer;">
+Iscriviti
+</button> </form> <hr style="border: none; border-top: 0.5px solid #D8C7B8; margin-bottom: 2.5rem;"> <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.25rem;"> <li style="display: flex; gap: 1rem; align-items: flex-start;"> <span style="color: #A65A3A; font-family: 'Cormorant Garamond', serif; font-size: 20px; flex-shrink: 0; line-height: 1.5;">—</span> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #5C4033; max-width: none;"> <strong style="color: #111111; font-weight: 500;">Un materiale alla volta.</strong> Ogni numero si concentra su un tema: una fibra, un processo, un termine che vale la pena capire davvero.
+</p> </li> <li style="display: flex; gap: 1rem; align-items: flex-start;"> <span style="color: #A65A3A; font-family: 'Cormorant Garamond', serif; font-size: 20px; flex-shrink: 0; line-height: 1.5;">—</span> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #5C4033; max-width: none;"> <strong style="color: #111111; font-weight: 500;">Nessun'agenda commerciale.</strong> TRAMA Studio non vende prodotti, non fa sponsorizzazioni, non spinge verso nessun brand. Solo informazione tessile curata.
+</p> </li> <li style="display: flex; gap: 1rem; align-items: flex-start;"> <span style="color: #A65A3A; font-family: 'Cormorant Garamond', serif; font-size: 20px; flex-shrink: 0; line-height: 1.5;">—</span> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #5C4033; max-width: none;"> <strong style="color: #111111; font-weight: 500;">Leggerla richiede cinque minuti.</strong> È scritta per chi vuole capire, non per chi vuole essere sommerso. Densa il giusto, leggera quanto basta.
+</p> </li> </ul> </div> </section>  </main> <footer class="border-t mt-20" style="border-color: #D8C7B8; border-width: 0.5px;"> <div class="max-w-content mx-auto px-6 md:px-10 py-12"> <div class="flex flex-col md:flex-row justify-between items-start gap-10"> <div> <a href="/" class="flex flex-col leading-none"> <span class="logo-trama text-lg text-nero">TRAMA</span> <span class="logo-studio text-[9px] mt-[1px]">studio</span> </a> <p class="didascalia mt-3 max-w-xs">
+Divulgazione sulla cultura tessile. Materiali, filiere, storia dei tessuti.
+</p> </div> <nav class="flex flex-col md:flex-row gap-4 md:gap-10"> <div class="flex flex-col gap-3"> <a href="/" class="didascalia hover:text-terracotta transition-colors">Home</a> <a href="/blog" class="didascalia hover:text-terracotta transition-colors">Blog</a> <a href="/blog" class="didascalia hover:text-terracotta transition-colors">Rubriche</a> </div> <div class="flex flex-col gap-3"> <a href="/glossario" class="didascalia hover:text-terracotta transition-colors">Glossario</a> <a href="/newsletter" class="didascalia hover:text-terracotta transition-colors">Newsletter</a> <a href="/about" class="didascalia hover:text-terracotta transition-colors">About</a> </div> </nav> </div> <hr class="separator my-8"> <p class="didascalia">© 2025 TRAMA Studio. Tutti i diritti riservati.</p> </div> </footer>   </body> </html>

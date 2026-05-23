@@ -174,6 +174,78 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
+"glossario": {
+"calandratura.md": {
+	id: "calandratura.md";
+  slug: "calandratura";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+"cimatura.md": {
+	id: "cimatura.md";
+  slug: "cimatura";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+"filato.md": {
+	id: "filato.md";
+  slug: "filato";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+"finissaggio.md": {
+	id: "finissaggio.md";
+  slug: "finissaggio";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+"greige.md": {
+	id: "greige.md";
+  slug: "greige";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+"mano.md": {
+	id: "mano.md";
+  slug: "mano";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+"ordito.md": {
+	id: "ordito.md";
+  slug: "ordito";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+"ritorto.md": {
+	id: "ritorto.md";
+  slug: "ritorto";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+"tessuto-non-tessuto.md": {
+	id: "tessuto-non-tessuto.md";
+  slug: "tessuto-non-tessuto";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+"trama.md": {
+	id: "trama.md";
+  slug: "trama";
+  body: string;
+  collection: "glossario";
+  data: InferEntrySchema<"glossario">
+} & { render(): Render[".md"] };
+};
 
 	};
 

@@ -20,4 +20,13 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const glossario = defineCollection({
+  type: 'content',
+  schema: z.object({
+    termine: z.string(),
+    lettera: z.string(),
+    definizione: z.string(),
+  }),
+});
+
+export const collections = { blog, glossario };

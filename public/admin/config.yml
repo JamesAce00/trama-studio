@@ -72,3 +72,30 @@ collections:
         modes:
           - raw
           - rich_text
+
+  - name: glossario
+    label: Glossario
+    label_singular: Voce del glossario
+    folder: src/content/glossario
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields:
+      - label: Termine
+        name: termine
+        widget: string
+        hint: "Il termine tessile da definire"
+
+      - label: Lettera
+        name: lettera
+        widget: string
+        hint: "Lettera dell'alfabeto per il raggruppamento (es. G, F, T)"
+        pattern: ['^[A-Z]$', 'Inserisci una singola lettera maiuscola']
+
+      - label: Definizione
+        name: definizione
+        widget: text
+        hint: "Definizione chiara e precisa del termine. Massimo 3-4 righe."

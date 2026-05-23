@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allVoci = await getCollection('glossario');
+
+const sorted = allVoci.sort((a, b) => {
+  const letterCompare = a.data.lettera.localeCompare(b.data.lettera, 'it');
+  if (letterCompare !== 0) return letterCompare;
+  return a.data.termine.localeCompare(b.data.termine, 'it');
+});
+
+const byLetter: Record<string, typeof sorted> = {};
+for (const voce of sorted) {
+  const l = voce.data.lettera.toUpperCase();
+  if (!byLetter[l]) byLetter[l] = [];
+  byLetter[l].push(voce);
+}
+
+const letters = Object.keys(byLetter).sort((a, b) => a.localeCompare(b, 'it'));
+---
+
+<BaseLayout
+  title="Glossario Tessile"
+  description="Vocabolario tessile: termini tecnici spiegati con rigore e precisione. Dal filato al finissaggio, dall'ordito alla trama."
+>
+
+  <!-- Header -->
+  <section class="py-16 px-6 md:px-10 border-b" style="border-color: #D8C7B8; border-width: 0.5px;">
+    <div class="max-w-content mx-auto">
+      <p class="occhiello text-terracotta mb-3">Glossario Tessile</p>
+      <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(36px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;">
+        Un vocabolario per capire
+      </h1>
+      <p class="lead-text mt-6 max-w-2xl">
+        Termini tecnici del mondo tessile spiegati senza semplificazioni eccessive, con contesto e precisione.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contenuto -->
+  <section class="py-16 px-6 md:px-10">
+    <div class="max-w-content mx-auto">
+
+      {letters.map(letter => (
+        <div class="mb-16">
+          <div class="flex items-center gap-6 mb-8">
+            <span style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 48px; line-height: 1; color: #D8C7B8; flex-shrink: 0;">
+              {letter}
+            </span>
+            <hr style="flex: 1; border: none; border-top: 0.5px solid #D8C7B8;" />
+          </div>
+
+          <div>
+            {byLetter[letter].map((voce, i) => (
+              <div>
+                <div class="py-6 flex flex-col md:flex-row md:gap-16">
+                  <div class="md:w-56 flex-shrink-0 mb-3 md:mb-0">
+                    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; line-height: 1.2;">
+                      {voce.data.termine}
+                    </h2>
+                  </div>
+                  <div class="flex-1">
+                    <p style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px; line-height: 1.75; color: #5C4033; max-width: 65ch;">
+                      {voce.data.definizione}
+                    </p>
+                  </div>
+                </div>
+                {i < byLetter[letter].length - 1 && (
+                  <hr style="border: none; border-top: 0.5px solid #D8C7B8;" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </section>
+
+</BaseLayout>

@@ -6,7 +6,8 @@
       "Bash(npx astro *)",
       "Bash(curl -s http://localhost:4322/)",
       "Bash(curl -s http://localhost:4322/blog/)",
-      "Bash(kill %1)"
+      "Bash(kill %1)",
+      "Bash(node *)"
     ]
   }
 }
