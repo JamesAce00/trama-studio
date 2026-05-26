@@ -103,14 +103,112 @@ const rubriche = [
   <!-- Contatti -->
   <section class="py-16 px-6 md:px-10">
     <div class="max-w-editorial mx-auto">
-      <p class="occhiello text-grigio mb-4">Contatti</p>
-      <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.75; color: #5C4033;">
-        Per collaborazioni editoriali, segnalazioni o domande:<br />
-        <a href="mailto:info@tramastudio.media" class="text-terracotta hover:underline underline-offset-2" style="font-weight: 500;">
-          info@tramastudio.media
-        </a>
+      <p class="occhiello text-terracotta mb-4">Contatti</p>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(28px, 4vw, 40px); line-height: 1.1; letter-spacing: -0.01em; color: #111111; margin-bottom: 1rem;">
+        Scrivici
+      </h2>
+      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; line-height: 1.55; color: #5C4033; margin-bottom: 2.5rem;">
+        Per collaborazioni, segnalazioni o semplicemente per parlare di tessuti.
       </p>
+
+      <form
+        id="contact-form"
+        name="contatti"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        style="background-color: #F5F1EA; padding: 2.5rem;"
+      >
+        <input type="hidden" name="form-name" value="contatti" />
+        <input type="hidden" name="bot-field" class="hidden" />
+
+        <div style="margin-bottom: 1.5rem;">
+          <label for="nome" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #A9A29A; display: block; margin-bottom: 0.5rem;">
+            Nome
+          </label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            required
+            class="contact-input"
+            style="width: 100%; background: transparent; border: 0.5px solid #D8C7B8; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; color: #111111; outline: none; box-sizing: border-box;"
+          />
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label for="email" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #A9A29A; display: block; margin-bottom: 0.5rem;">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="contact-input"
+            style="width: 100%; background: transparent; border: 0.5px solid #D8C7B8; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; color: #111111; outline: none; box-sizing: border-box;"
+          />
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <label for="messaggio" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #A9A29A; display: block; margin-bottom: 0.5rem;">
+            Messaggio
+          </label>
+          <textarea
+            id="messaggio"
+            name="messaggio"
+            required
+            rows="5"
+            class="contact-input"
+            style="width: 100%; background: transparent; border: 0.5px solid #D8C7B8; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; color: #111111; outline: none; resize: vertical; box-sizing: border-box;"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="submit-btn"
+          style="background-color: #A65A3A; color: #F5F1EA; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.875rem 2rem; border: none; cursor: pointer;"
+        >
+          Invia
+        </button>
+      </form>
+
+      <div id="form-success" style="display: none; background-color: #F5F1EA; padding: 2.5rem;">
+        <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.75; color: #5C4033;">
+          Messaggio ricevuto. Ti risponderemo a <span style="color: #A65A3A; font-weight: 500;">info@tramastudio.media</span>
+        </p>
+      </div>
     </div>
   </section>
 
 </BaseLayout>
+
+<style>
+  .contact-input:focus {
+    border-color: #A65A3A !important;
+  }
+  .submit-btn:hover {
+    background-color: #5C4033 !important;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successMsg = document.getElementById('form-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new URLSearchParams(new FormData(form) as any).toString();
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data,
+      });
+      form.style.display = 'none';
+      if (successMsg) successMsg.style.display = 'block';
+    } catch {
+      form.submit();
+    }
+  });
+</script>
