@@ -1,44 +1,64 @@
 ---
 ---
 
-<section style="background-color: #111111;" class="py-20 px-6 md:px-10">
-  <div class="max-w-content mx-auto">
-    <p class="occhiello mb-4" style="color: #A65A3A;">Newsletter</p>
-    <h2
-      style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: -0.01em; color: #F5F1EA; margin-bottom: 0.75rem;"
-    >
-      Ogni settimana, un materiale spiegato bene.
-    </h2>
-    <p
-      style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 18px; line-height: 1.55; color: #A9A29A; margin-bottom: 2rem; max-width: 45ch;"
-    >
-      Gratis. Niente spam. Disiscriviti quando vuoi.
-    </p>
-    <form class="flex flex-col sm:flex-row gap-3 max-w-md" onsubmit="return false;">
-      <input
-        type="email"
-        placeholder="La tua email"
-        required
-        style="flex: 1; padding: 12px 16px; background: transparent; border: 0.5px solid #A9A29A; color: #F5F1EA; font-family: 'Inter', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s;"
-        onfocus="this.style.borderColor='#A65A3A'"
-        onblur="this.style.borderColor='#A9A29A'"
-      />
-      <button
-        type="submit"
-        class="occhiello transition-colors duration-200 hover:opacity-90"
-        style="padding: 12px 24px; background-color: #A65A3A; color: #F5F1EA; font-size: 11px; white-space: nowrap; border: none; cursor: pointer;"
-      >
-        Iscriviti
-      </button>
-    </form>
-    <p style="margin-top: 1.5rem;">
-      <a
-        href="/newsletter"
-        class="didascalia hover:text-terracotta transition-colors"
-        style="color: #A9A29A; text-decoration: underline; text-underline-offset: 3px;"
-      >
-        Leggi di più sulla newsletter →
-      </a>
-    </p>
+<div class="sib-form" style="text-align:center; background-color:#111111;">
+  <div id="sib-form-container" class="sib-form-container">
+    <div id="error-message" class="sib-form-message-panel" style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px; max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <span class="sib-form-message-panel__inner-text">La tua iscrizione non può essere convalidata.</span>
+      </div>
+    </div>
+    <div id="success-message" class="sib-form-message-panel" style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#085229; background-color:#e7faf0; border-color:#13ce66; border-radius:3px; max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <span class="sib-form-message-panel__inner-text">Benvenuto in TRAMA Studio. Controlla la tua casella email.</span>
+      </div>
+    </div>
+    <div id="sib-container" class="sib-container--large sib-container--vertical" style="max-width:540px; text-align:center; background-color:rgba(26,26,26,1); border-width:1px; border-style:solid; border-color:#d8c7b8; border-radius:3px; direction:ltr">
+      <form id="sib-form" method="POST" action="https://1dea74ff.sibforms.com/serve/MUIFAOl2Hs03VOoSQ-Y2nBj7rO8jLw4AB-7mPiIcghwFn5GuwXOygBOCIDcCk0Ad7e5rcpDjZSWSHNPfPBR7UrvzIlM19JkAc7Dk9Is07ptDJdNQwJNJxng3l-vfQHrDHZl0qTwmP-WEMFZSZHv8inxq8umJnupMNiqujxaJPK5OAJGtucke9ry3IEzxPnYkGlq9YDvW-aHImTKB_A==" data-type="subscription">
+        <div style="padding:8px 0;">
+          <div class="sib-form-block" style="font-family:Garamond,serif; font-size:32px; font-weight:700; text-align:left; color:#f5f1ea; background-color:transparent;">
+            <p>Il linguaggio nascosto dei tessuti</p>
+          </div>
+        </div>
+        <div style="padding:8px 0;">
+          <div class="sib-form-block" style="font-family:Georgia,serif; font-size:16px; text-align:left; color:#a9a29a; background-color:transparent;">
+            <div class="sib-text-form-block">
+              <p>Ogni settimana, un materiale spiegato bene. Gratis, niente spam, disiscriviti quando vuoi.</p>
+            </div>
+          </div>
+        </div>
+        <div style="padding:8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row">
+                <label class="entry__label" style="font-weight:700; font-family:Georgia,serif; font-size:16px; color:#f5f1ea;" for="EMAIL" data-required="*">Il tuo indirizzo email</label>
+                <div class="entry__field">
+                  <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="EMAIL" data-required="true" required />
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-family:Helvetica,sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;"></label>
+            </div>
+          </div>
+        </div>
+        <div style="padding:8px 0;">
+          <div class="sib-form-block" style="text-align:left;">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-family:Georgia,serif; font-size:16px; font-weight:700; color:#f5f1ea; background-color:#a65a3a; border-width:0px; border-radius:3px;" form="sib-form" type="submit">
+              ISCRIVITI
+            </button>
+          </div>
+        </div>
+        <input type="text" name="email_address_check" value="" class="input--hidden">
+        <input type="hidden" name="locale" value="it">
+      </form>
+    </div>
   </div>
-</section>
+</div>
+<div style="background-color: #111111; text-align: center; padding: 0 1.5rem 2.5rem;">
+  <a
+    href="/newsletter"
+    class="didascalia hover:text-terracotta transition-colors"
+    style="color: #A9A29A; text-decoration: underline; text-underline-offset: 3px;"
+  >
+    Leggi di più sulla newsletter →
+  </a>
+</div>
