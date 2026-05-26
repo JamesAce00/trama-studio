@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="it"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Informativa sulla privacy di TRAMA Studio — tramastudio.media."><title>Privacy Policy — TRAMA Studio</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="stylesheet" href="/_astro/about.DZ17NaVX.css"><script type="module" src="/_astro/hoisted.CTKyvsNm.js"></script></head> <body class="bg-bianco text-nero min-h-screen flex flex-col"> <header class="sticky top-0 z-50 bg-bianco border-b" style="border-color: #D8C7B8; border-width: 0.5px;"> <div class="max-w-content mx-auto px-6 md:px-10 flex items-center justify-between h-16"> <!-- Logo --> <a href="/" class="flex flex-col leading-none group" aria-label="TRAMA Studio — Homepage"> <span class="logo-trama text-xl text-nero group-hover:text-terracotta transition-colors duration-200">TRAMA</span> <span class="logo-studio text-[9px] mt-[1px]">studio</span> </a> <!-- Desktop nav --> <nav class="hidden md:flex items-center gap-8"> <a href="/" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-nero hover:text-terracotta"> Home </a><a href="/blog" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-nero hover:text-terracotta"> Blog </a><a href="/glossario" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-nero hover:text-terracotta"> Glossario </a><a href="/newsletter" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-nero hover:text-terracotta"> Newsletter </a><a href="/about" class="font-inter font-400 text-sm tracking-wide transition-colors duration-200 text-nero hover:text-terracotta"> About </a> </nav> <!-- Hamburger button (mobile only) --> <button id="menu-toggle" class="md:hidden text-2xl leading-none p-2 text-nero" aria-label="Apri menu" aria-expanded="false" type="button">
+☰
+</button> </div> <!-- Mobile menu --> <div id="mobile-menu" class="hidden md:hidden w-full flex-col py-6 px-6 space-y-5" style="background-color: #111111;"> <a href="/" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> Home </a><a href="/blog" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> Blog </a><a href="/glossario" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> Glossario </a><a href="/newsletter" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> Newsletter </a><a href="/about" class="block text-base font-inter tracking-wide transition-colors duration-200" style="color: #F5F1EA;"> About </a> </div> </header> <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('menu-toggle');
+    var menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function () {
+        var isOpen = !menu.classList.contains('hidden');
+        if (isOpen) {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.textContent = '☰';
+        } else {
+          menu.classList.remove('hidden');
+          menu.classList.add('flex');
+          toggle.setAttribute('aria-expanded', 'true');
+          toggle.textContent = '✕';
+        }
+      });
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.textContent = '☰';
+        });
+      });
+    }
+  });
+</script> <main class="flex-1">   <section class="py-16 px-6 md:px-10 border-b" style="border-color: #D8C7B8; border-width: 0.5px;"> <div style="max-width: 680px; margin: 0 auto;"> <p class="occhiello text-grigio mb-3">Informativa sulla privacy</p> <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(36px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;">
+Privacy Policy
+</h1> </div> </section>  <section class="py-16 px-6 md:px-10"> <div style="max-width: 680px; margin: 0 auto;"> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033; margin-bottom: 3rem;">
+TRAMA Studio (tramastudio.media) raccoglie e tratta i dati personali degli utenti nel rispetto del Regolamento UE 2016/679 (GDPR).
+</p> <!-- Titolare --> <div class="mb-12"> <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid #D8C7B8;">
+Titolare del trattamento
+</h2> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033;">
+TRAMA Studio — tramastudio.media<br>
+Contatto: <a href="mailto:info@tramastudio.media" class="text-terracotta hover:underline underline-offset-2" style="font-weight: 500;">info@tramastudio.media</a> </p> </div> <!-- Dati raccolti --> <div class="mb-12"> <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid #D8C7B8;">
+Dati raccolti
+</h2> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033; margin-bottom: 0.75rem;">
+Il sito raccoglie esclusivamente:
+</p> <ul style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033; padding-left: 1.25rem; list-style: disc;"> <li>Indirizzo email, fornito volontariamente tramite il form di iscrizione alla newsletter</li> <li>Dati di navigazione anonimi tramite strumenti di analisi</li> </ul> </div> <!-- Finalità --> <div class="mb-12"> <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid #D8C7B8;">
+Finalità del trattamento
+</h2> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033; margin-bottom: 0.75rem;">
+I dati sono utilizzati esclusivamente per:
+</p> <ul style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033; padding-left: 1.25rem; list-style: disc;"> <li>Invio della newsletter editoriale di TRAMA Studio</li> <li>Analisi statistica anonima del traffico</li> </ul> </div> <!-- Base giuridica --> <div class="mb-12"> <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid #D8C7B8;">
+Base giuridica
+</h2> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033;">
+Il trattamento si basa sul consenso esplicito dell'utente (Art. 6, par. 1, lett. a GDPR).
+</p> </div> <!-- Conservazione --> <div class="mb-12"> <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid #D8C7B8;">
+Conservazione dei dati
+</h2> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033;">
+I dati sono conservati fino alla revoca del consenso da parte dell'utente.
+</p> </div> <!-- Diritti --> <div class="mb-12"> <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid #D8C7B8;">
+Diritti dell'utente
+</h2> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033; margin-bottom: 0.75rem;">
+L'utente può in qualsiasi momento richiedere: accesso, rettifica, cancellazione dei propri dati, revoca del consenso, portabilità dei dati.
+</p> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033;">
+Per esercitare i propri diritti: <a href="mailto:info@tramastudio.media" class="text-terracotta hover:underline underline-offset-2" style="font-weight: 500;">info@tramastudio.media</a> </p> </div> <!-- Cookie --> <div class="mb-12"> <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid #D8C7B8;">
+Cookie
+</h2> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033;">
+Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento. Non utilizza cookie di profilazione o tracciamento di terze parti.
+</p> </div> <!-- Modifiche --> <div class="mb-12"> <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid #D8C7B8;">
+Modifiche
+</h2> <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033;">
+TRAMA Studio si riserva il diritto di aggiornare questa informativa. La data dell'ultimo aggiornamento è indicata in fondo alla pagina.
+</p> </div> <p class="didascalia" style="border-top: 0.5px solid #D8C7B8; padding-top: 2rem;">
+Ultimo aggiornamento: maggio 2025
+</p> </div> </section>  </main> <footer class="border-t mt-20" style="border-color: #D8C7B8; border-width: 0.5px;"> <div class="max-w-content mx-auto px-6 md:px-10 py-12"> <div class="flex flex-col md:flex-row justify-between items-start gap-10"> <div> <a href="/" class="flex flex-col leading-none"> <span class="logo-trama text-lg text-nero">TRAMA</span> <span class="logo-studio text-[9px] mt-[1px]">studio</span> </a> <p class="didascalia mt-3 max-w-xs">
+Divulgazione sulla cultura tessile. Materiali, filiere, storia dei tessuti.
+</p> </div> <nav class="flex flex-col md:flex-row gap-4 md:gap-10"> <div class="flex flex-col gap-3"> <a href="/" class="didascalia hover:text-terracotta transition-colors">Home</a> <a href="/blog" class="didascalia hover:text-terracotta transition-colors">Blog</a> <a href="/glossario" class="didascalia hover:text-terracotta transition-colors">Glossario</a> </div> <div class="flex flex-col gap-3"> <a href="/newsletter" class="didascalia hover:text-terracotta transition-colors">Newsletter</a> <a href="/about" class="didascalia hover:text-terracotta transition-colors">About</a> </div> </nav> </div> <hr class="separator my-8"> <div class="flex flex-wrap items-center gap-4"> <p class="didascalia">© 2025 TRAMA Studio. Tutti i diritti riservati.</p> <a href="/privacy-policy" class="didascalia hover:text-terracotta transition-colors">Privacy Policy</a> </div> </div> </footer> <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background-color: #111111; padding: 1rem 1.5rem;"> <div style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;"> <p style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #F5F1EA; margin: 0;">
+Questo sito usa cookie tecnici necessari al funzionamento. Nessun cookie di profilazione.
+<a href="/privacy-policy" style="color: #F5F1EA; text-decoration: underline; text-underline-offset: 3px; margin-left: 0.5rem; white-space: nowrap;">Privacy Policy</a> </p> <button id="cookie-accept" style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: #F5F1EA; background-color: #A65A3A; border: none; padding: 0.5rem 1.25rem; cursor: pointer; white-space: nowrap; flex-shrink: 0;">
+Ho capito
+</button> </div> </div> <script>
+  (function () {
+    if (localStorage.getItem('cookie-consent') === 'accepted') return;
+    var banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'block';
+    var btn = document.getElementById('cookie-accept');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        localStorage.setItem('cookie-consent', 'accepted');
+        banner.style.display = 'none';
+      });
+    }
+  })();
+</script>   </body> </html>
