@@ -1,53 +1,52 @@
 ---
-title: "Il cotone che non respira: perché il tessuto più amato del mondo non è sempre quello che credi"
-date: 2024-09-12
-rubrica: "MATERIA PRIMA"
-lead: "Un capo al cento per cento cotone non è garanzia di qualità. Il processo di produzione, la filatura, il finissaggio chimico: tutto questo trasforma una fibra naturale in qualcosa di molto diverso da ciò che immaginiamo."
-autore: "Redazione TRAMA"
+title: "Il cotone: la fibra più comprata al mondo e la meno capita"
+date: 2026-05-11
+rubrica: MATERIA PRIMA
+lead: Lo conosciamo tutti. Lo indossiamo ogni giorno. Eppure il cotone nasconde
+  una complessità che quasi nessuna etichetta racconta — e che cambia tutto su
+  ciò che percepiamo come qualità.
+autore: Redazione TRAMA Studio
 ---
+C'è una fibra che probabilmente state indossando in questo momento. È nel vostro guardaroba da sempre, compare su quasi ogni etichetta, ha un nome così familiare da sembrare trasparente. Eppure il cotone è probabilmente la fibra tessile più fraintesa che esista.
 
-Quando leggiamo "100% cotone" su un'etichetta, la nostra mente compie un salto automatico: naturale, traspirante, sicuro. Eppure questa equazione è spesso sbagliata. Il cotone è una fibra, non un tessuto. E il viaggio che compie dalla pianta al capo che indossiamo può stravolgere completamente le sue proprietà originali.
+Non è colpa di nessuno in particolare. Il cotone è diventato così ubiquo — è la seconda fibra più prodotta al mondo dopo il poliestere, con una quota di circa il 19% della produzione globale di fibre secondo il *Materials Market Report* di Textile Exchange (edizione 2024, dati 2023/24) — che abbiamo smesso di guardarlo davvero. "100% cotone" è diventata una promessa generica, un segnale di naturalità percepita, spesso di comfort. Il problema è che dietro quella dicitura possono nascondersi capi che non hanno quasi nulla in comune tra loro.
 
-## La fibra e il filato non sono la stessa cosa
+"100% cotone" può significare tutto. Il punto è capire *quale* cotone, lavorato *come*.
 
-Il cotone grezzo — la fibra raccolta dalla capsula del *Gossypium* — è di per sé un materiale eccellente: cavo al centro, capace di assorbire l'umidità, morbido al tatto. Ma già nella fase di filatura, le cose cambiano.
+Partiamo dall'inizio.
 
-> La differenza tra un cotone "open-end" e un cotone "ring-spun" è la stessa che passa tra un panino industriale e uno fatto a lievitazione naturale: stesso ingrediente di base, risultato completamente diverso.
+Il cotone è una fibra naturale che si ricava dal seme della pianta *Gossypium* — un genere botanico con decine di specie, delle quali solo quattro vengono coltivate su scala industriale. La fibra che utilizziamo non è altro che il pelo sericeo che protegge il seme della pianta: una struttura di cellulosa quasi pura, lunga e sottile, che si è evoluta per disperdere i semi nel vento.
 
-Il cotone **cardato open-end**, usato per la maggior parte delle t-shirt economiche, produce un filo più grezzo e irregolare. Le fibre vengono ritorte velocemente, con risultati efficienti ma mediocri in termini di mano e durata. Il cotone **ring-spun** — il cui nome italiano è "cotone filato ad anello" — viene invece lavorato più lentamente, producendo un filo più liscio, resistente e piacevole al tatto.
+**Cellulosa**Il principale polimero strutturale delle piante. Nel cotone costituisce oltre il 90% della fibra. È ciò che rende il cotone igroscopico — capace di assorbire umidità — e che spiega la sua piacevole sensazione sulla pelle.
 
-## Il problema del finissaggio
+Ma qui inizia già la prima distinzione che le etichette non fanno: non tutto il cotone è uguale perché non tutte le piante di cotone sono uguali, non crescono nelle stesse condizioni, e soprattutto non producono fibre della stessa lunghezza.
 
-Supponiamo di avere una buona filatura. Il passo successivo è la tessitura o la maglieria, poi il finissaggio. Ed è qui che il cotone subisce il trattamento più pesante.
+E la lunghezza è tutto.
 
-I finissaggi chimici più comuni includono:
+I tecnici del settore tessile valutano il cotone principalmente attraverso la *lunghezza della fibra* — in inglese *staple length*. Più la fibra è lunga, più il filo che ne deriva sarà resistente, regolare e morbido. Una fibra corta si rompe più facilmente durante la filatura, produce un filo più irregolare, e genera più peluria in superficie — il che si traduce in un capo che si "impeluccia" e tende a formare quei piccoli nodini che conoscete bene.
 
-- **Antipiega (easy care)**: resine a base di formaldeide o simili, che rendono il tessuto facile da stirare ma riducono la traspirabilità e possono irritare le pelli sensibili.
-- **Antimacchia**: coating sintetici che impermeabilizzano la superficie, annullando completamente la capacità del cotone di assorbire l'umidità.
-- **Sbiancanti ottici**: agenti fluorescenti che rendono il bianco più brillante ma che si degradano nel tempo, soprattutto con lavaggi frequenti.
+**Staple length (lunghezza della fibra)**La lunghezza media delle singole fibre di cotone prima della filatura. Si misura in millimetri o in pollici. Secondo le classificazioni di settore adottate dai principali sistemi di standardizzazione (tra cui HVI e USDA), le fibre fino a circa 28 mm sono considerate corte; tra 28 e 34 mm standard; oltre 34 mm si entra nel territorio *long staple*; i cotoni più pregiati superano i 38–40 mm.
 
-Dopo questi trattamenti, il "100% cotone" dell'etichetta descrive solo la composizione fibrosa — non le sostanze che il tessuto ha assorbito durante la lavorazione.
+Esistono quindi cotoni standard, cotoni a fibra lunga (*long staple*) e cotoni a fibra extra-lunga (*extra-long staple*). Tra i più noti di quest'ultima categoria ci sono il cotone Egiziano — quello certificato, prodotto nel delta del Nilo — e il cotone Pima, coltivato principalmente in USA e Perù, con produzioni minori in Australia e altri paesi.
 
-## Come riconoscere un buon cotone
+Ma attenzione: anche qui le cose non sono semplici. Il termine "cotone egiziano" compare su molte etichette di prodotti che nulla hanno a che fare con l'Egitto. La denominazione di origine non è sempre protetta come ci si aspetterebbe, ed è una zona grigia normativa che vale la pena conoscere prima di acquistare.
 
-Non esiste un'etichetta che ci dica tutto. Ma ci sono alcuni segnali:
+C'è poi un secondo parametro che raramente viene comunicato al consumatore: il *sistema di filatura*. Il cotone può essere filato con metodi diversi, che producono fili con caratteristiche radicalmente differenti. La filatura *combed* (pettinata), per esempio, prevede un passaggio aggiuntivo che rimuove le fibre più corte e allinea quelle più lunghe: il risultato è un filo più compatto, più lucido, più resistente. La filatura *carded* (cardata) è meno selettiva e più rapida — produce un filo più morbido ma meno uniforme. La filatura *open-end*, ampiamente usata nella produzione di massa, è ancora più veloce e genera un filo con una struttura diversa — più voluminoso e con una mano più rustica, adatto a certi usi (jeans, tessuti tecnici, abbigliamento da lavoro) ma meno adatto ad altri.
 
-**Il peso conta.** Un cotone di qualità per maglieria pesa tra i 180 e i 220 g/m². Le t-shirt sottili da fast fashion si aggirano sui 130-150 g/m². Più è leggero, più è probabile che sia stato ottimizzato per il costo, non per la qualità.
+Nessuna di queste informazioni compare di norma sull'etichetta. La composizione vi dice cosa c'è dentro il filo; il sistema di filatura vi direbbe come quel filo è stato costruito. Sono due cose diverse, e contano entrambe.
 
-**Il tatto a freddo.** Un buon cotone ring-spun è subito morbido, senza lavaggi. Se il capo è rigido o ha una superficie plasticosa al tatto, è probabile che sia stato trattato.
+Il modo in cui una fibra viene filata cambia il capo tanto quanto la fibra stessa.
 
-**Il test dell'umidità.** Premi un angolo del tessuto sulle labbra: un cotone senza trattamenti impermeabilizzanti assorbirà immediatamente l'umidità del respiro. Se rimane secco, è stato impermeabilizzato.
+Un'altra variabile che il cotone porta con sé è il processo di finitura — il *finissaggio*, ovvero tutti i trattamenti chimici e meccanici che il tessuto subisce dopo la tessitura. Un cotone può essere mercerizzato (trattato con soda caustica per aumentare lucentezza e resistenza alla tintura), sanforizzato (pre-ristretto per limitare il restringimento in lavatrice), stonewashed (invecchiato artificialmente), o trattato con resine antipiega. Ogni processo modifica il comportamento del tessuto, la sua mano, la sua durata nel tempo.
 
-## Cosa cercare sull'etichetta
+**Mercerizzazione**Trattamento chimico che prende il nome dal chimico inglese John Mercer. Nel 1844 Mercer osservò che il cotone immerso in soda caustica diventava più resistente e assorbiva meglio la tintura; brevettò la scoperta nel 1850, ma il processo rimase di scarso interesse industriale per decenni. Fu Horace Lowe che, nel 1890, aggiunse la fase determinante: mantenere il tessuto in tensione durante l'immersione. Questo passaggio è ciò che produce la caratteristica lucentezza duratura del cotone mercerizzato. Il processo come lo conosciamo oggi — e come compare sui capi in commercio — è il risultato di entrambi i contributi.
 
-Alcune certificazioni segnalano un trattamento più attento:
+Tutto questo — varietà botanica, lunghezza della fibra, sistema di filatura, titolo del filo, armatura del tessuto, finissaggi — è ciò che differenzia una t-shirt da 8 euro da una da 80. Non si tratta di magia o di marketing: si tratta di scelte tecniche precise, a cascata lungo tutta la filiera, ciascuna delle quali ha un costo e un impatto sul risultato finale.
 
-- **GOTS** (Global Organic Textile Standard): garantisce l'origine biologica delle fibre *e* il processo di lavorazione.
-- **OEKO-TEX Standard 100**: certifica l'assenza di sostanze nocive nel prodotto finito, indipendentemente dall'origine delle fibre.
-- **Fairtrade Cotton**: attesta condizioni di commercio equo per i coltivatori, non necessariamente qualità del tessuto.
+Il cotone non è una commodity uniforme, anche se il mercato lo ha trattato come tale per decenni. È una materia prima con una complessità interna che merita di essere conosciuta — non per snobbare le scelte economiche, ma per leggerle con più consapevolezza.
 
-Nessuna certificazione è perfetta. Ma la loro presenza è già un segnale che il produttore ha dovuto rispondere a qualcuno delle proprie scelte.
+La prossima volta che leggete "100% cotone" su un'etichetta, sapete già che quella frase racconta solo l'inizio della storia.
 
----
+Continua su TRAMA Studio — Premium
 
-Il cotone rimane una fibra straordinaria. Ma imparare a distinguere tra "cotone come ingrediente" e "cotone come esperienza finale" è il primo passo per fare acquisti più consapevoli — e per smettere di pagare per qualcosa che non è ciò che sembra.
+Se vuoi capire come riconoscere concretamente la differenza tra un cotone standard e un long staple — al tatto, alla luce, dopo i lavaggi — trovi la guida tecnica comparativa riservata agli abbonati. Con dati di filiera, gradi di classificazione e quello che le etichette non diranno mai.
