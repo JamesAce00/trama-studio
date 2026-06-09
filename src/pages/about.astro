@@ -1,3 +1,5 @@
+<details>
+<summary>Contenuto completo about.astro (clicca per espandere)</summary>
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -10,29 +12,18 @@ const principi = [
   {
     numero: '02',
     titolo: 'Il tessile è cultura, non solo prodotto',
-    testo: 'Un tessuto racconta una storia geografica, economica, artigianale. Capire un materiale significa capire un pezzo di mondo — il lavoro di chi l\'ha prodotto, il territorio in cui è cresciuto.',
+    testo: "Un tessuto racconta una storia geografica, economica, artigianale. Capire un materiale significa capire un pezzo di mondo — il lavoro di chi l'ha prodotto, il territorio in cui è cresciuto.",
   },
   {
     numero: '03',
     titolo: 'La qualità non è uno slogan',
-    testo: 'Usiamo questa parola con precisione. La qualità ha parametri misurabili: il diametro di una fibra, la densità di un tessuto, i passaggi di un finissaggio. Non è un\'opinione, è una competenza.',
+    testo: "Usiamo questa parola con precisione. La qualità ha parametri misurabili: il diametro di una fibra, la densità di un tessuto, i passaggi di un finissaggio. Non è un'opinione, è una competenza.",
   },
-];
-
-const rubriche = [
-  { nome: 'MATERIA PRIMA', verde: false, descrizione: 'Le fibre al centro. Cotone, lana, lino, seta, sintetici: da dove vengono, come si producono, cosa significano sul corpo.' },
-  { nome: 'DENTRO IL CAPO', verde: false, descrizione: 'Anatomia di un indumento. Costruzione, cuciture, fodere, rifiniture: tutto ciò che non si vede ma si sente.' },
-  { nome: "DIETRO L'ETICHETTA", verde: false, descrizione: 'Cosa c\'è scritto davvero su quel cartellino. Composizioni, certificazioni, paesi di produzione: imparare a leggere.' },
-  { nome: 'MITI DA SFATARE', verde: false, descrizione: 'Le credenze più diffuse sul tessile, smontate con rigore. Il cotone sempre traspirante, la lana che punge, il naturale sempre meglio.' },
-  { nome: 'GLOSSARIO TESSILE', verde: false, descrizione: 'Un vocabolario per capire. Termini tecnici spiegati senza semplificazioni eccessive, con contesto e precisione.' },
-  { nome: 'SCELTE CONSAPEVOLI', verde: false, descrizione: 'Come orientarsi negli acquisti con più criterio. Non greenwashing, non moralismo: strumenti concreti per decidere meglio.' },
-  { nome: 'TRAME DI STORIA', verde: true, descrizione: 'I tessuti come documenti storici. Commercio, potere, cultura e identità raccontati attraverso i fili.' },
-  { nome: 'DALLA FILIERA', verde: true, descrizione: 'Dentro i distretti, le manifatture, le aziende che fanno davvero i tessuti. Storie di luoghi e processi.' },
 ];
 ---
 
 <BaseLayout
-  title="About"
+  title="Chi siamo"
   description="Chi è TRAMA Studio e qual è la sua missione editoriale sulla cultura tessile."
 >
 
@@ -58,6 +49,46 @@ const rubriche = [
     </div>
   </section>
 
+  <!-- Origini -->
+  <section class="py-16 px-6 md:px-10 border-b" style="border-color: #D8C7B8; border-width: 0.5px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start;">
+      <div>
+        <p class="occhiello text-grigio mb-3">Le origini</p>
+      </div>
+      <div>
+        <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.25rem; line-height: 1.65; color: #111111; margin-bottom: 1.5rem;">
+          TRAMA Studio nasce da una passione personale per i tessuti e da un'osservazione precisa: la maggior parte di chi compra un capo non ha gli strumenti per capire cosa sta acquistando.
+        </p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033; margin-bottom: 1.5rem;">
+          Le etichette sono diventate documenti opachi. Il linguaggio della moda parla di estetica, non di sostanza. La parola "qualità" viene usata come slogan senza mai essere definita. E chi vuole capire davvero — cosa c'è dentro un tessuto, come è fatto, quanto durerà, chi lo ha prodotto — si trova spesso senza risposte chiare.
+        </p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033;">
+          Questo progetto è nato per colmare quel vuoto. Non come rivista di moda, non come guida agli acquisti, ma come osservatorio culturale: un luogo dove il tessile viene raccontato con la stessa serietà con cui si raccontano l'architettura, il cibo, il design.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approccio -->
+  <section class="py-16 px-6 md:px-10 border-b" style="border-color: #D8C7B8; border-width: 0.5px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start;">
+      <div>
+        <p class="occhiello text-grigio mb-3">Come lavoriamo</p>
+      </div>
+      <div>
+        <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.25rem; line-height: 1.65; color: #111111; margin-bottom: 1.5rem;">
+          Ogni contenuto su TRAMA Studio parte da una domanda concreta: cosa significa davvero questa parola? Da dove viene questo materiale? Perché questo capo costa così tanto — o così poco?
+        </p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033; margin-bottom: 1.5rem;">
+          Il metodo è quello del giornalismo culturale applicato al mondo tessile: ricerca, verifica, spiegazione. I termini tecnici vengono definiti, non dati per scontati. I dati citati vengono contestualizzati. Le affermazioni vengono motivate.
+        </p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #5C4033;">
+          Non scriviamo per chi lavora già nel settore — anche se speriamo che trovi qualcosa di interessante. Scriviamo per chi porta indosso dei tessuti ogni giorno e vuole capirli meglio. Per chi legge le etichette e non sa cosa significa il 78% di poliestere. Per chi ha sentito parlare di lino, merino, tencel — e vuole sapere cosa sono davvero.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Filosofia -->
   <section class="py-16 px-6 md:px-10 border-b" style="border-color: #D8C7B8; border-width: 0.5px;">
     <div class="max-w-content mx-auto">
@@ -71,28 +102,6 @@ const rubriche = [
             </h3>
             <p style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.75; color: #5C4033; max-width: none;">
               {p.testo}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Rubriche -->
-  <section class="py-16 px-6 md:px-10 border-b" style="border-color: #D8C7B8; border-width: 0.5px;">
-    <div class="max-w-content mx-auto">
-      <p class="occhiello text-grigio mb-10">Le otto rubriche</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0" style="border: 0.5px solid #D8C7B8;">
-        {rubriche.map((r, i) => (
-          <div
-            class="px-8 py-7"
-            style={`border-right: ${i % 2 === 0 ? '0.5px solid #D8C7B8' : 'none'}; border-bottom: ${i < rubriche.length - 2 ? '0.5px solid #D8C7B8' : 'none'};`}
-          >
-            <span class={`occhiello block mb-2 ${r.verde ? 'text-verde' : 'text-terracotta'}`}>
-              {r.nome}
-            </span>
-            <p style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; color: #A9A29A; max-width: none;">
-              {r.descrizione}
             </p>
           </div>
         ))}
@@ -123,54 +132,21 @@ const rubriche = [
         <input type="hidden" name="bot-field" class="hidden" />
 
         <div style="margin-bottom: 1.5rem;">
-          <label for="nome" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #A9A29A; display: block; margin-bottom: 0.5rem;">
-            Nome
-          </label>
-          <input
-            type="text"
-            id="nome"
-            name="nome"
-            required
-            class="contact-input"
-            style="width: 100%; background: transparent; border: 0.5px solid #D8C7B8; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; color: #111111; outline: none; box-sizing: border-box;"
-          />
+          <label for="nome" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #A9A29A; display: block; margin-bottom: 0.5rem;">Nome</label>
+          <input type="text" id="nome" name="nome" required class="contact-input" style="width: 100%; background: transparent; border: 0.5px solid #D8C7B8; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; color: #111111; outline: none; box-sizing: border-box;" />
         </div>
 
         <div style="margin-bottom: 1.5rem;">
-          <label for="email" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #A9A29A; display: block; margin-bottom: 0.5rem;">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            class="contact-input"
-            style="width: 100%; background: transparent; border: 0.5px solid #D8C7B8; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; color: #111111; outline: none; box-sizing: border-box;"
-          />
+          <label for="email" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #A9A29A; display: block; margin-bottom: 0.5rem;">Email</label>
+          <input type="email" id="email" name="email" required class="contact-input" style="width: 100%; background: transparent; border: 0.5px solid #D8C7B8; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; color: #111111; outline: none; box-sizing: border-box;" />
         </div>
 
         <div style="margin-bottom: 2rem;">
-          <label for="messaggio" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #A9A29A; display: block; margin-bottom: 0.5rem;">
-            Messaggio
-          </label>
-          <textarea
-            id="messaggio"
-            name="messaggio"
-            required
-            rows="5"
-            class="contact-input"
-            style="width: 100%; background: transparent; border: 0.5px solid #D8C7B8; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; color: #111111; outline: none; resize: vertical; box-sizing: border-box;"
-          ></textarea>
+          <label for="messaggio" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #A9A29A; display: block; margin-bottom: 0.5rem;">Messaggio</label>
+          <textarea id="messaggio" name="messaggio" required rows="5" class="contact-input" style="width: 100%; background: transparent; border: 0.5px solid #D8C7B8; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 16px; color: #111111; outline: none; resize: vertical; box-sizing: border-box;"></textarea>
         </div>
 
-        <button
-          type="submit"
-          class="submit-btn"
-          style="background-color: #A65A3A; color: #F5F1EA; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.875rem 2rem; border: none; cursor: pointer;"
-        >
-          Invia
-        </button>
+        <button type="submit" class="submit-btn" style="background-color: #A65A3A; color: #F5F1EA; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.875rem 2rem; border: none; cursor: pointer;">Invia</button>
       </form>
 
       <div id="form-success" style="display: none; background-color: #F5F1EA; padding: 2.5rem;">
@@ -184,31 +160,26 @@ const rubriche = [
 </BaseLayout>
 
 <style>
-  .contact-input:focus {
-    border-color: #A65A3A !important;
-  }
-  .submit-btn:hover {
-    background-color: #5C4033 !important;
+  .contact-input:focus { border-color: #A65A3A !important; }
+  .submit-btn:hover { background-color: #5C4033 !important; }
+  @media (max-width: 768px) {
+    .origini-grid, .approccio-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
   }
 </style>
 
-<script>
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  const successMsg = document.getElementById('form-success');
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = new URLSearchParams(new FormData(form) as any).toString();
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: data,
-      });
-      form.style.display = 'none';
-      if (successMsg) successMsg.style.display = 'block';
-    } catch {
-      form.submit();
-    }
-  });
+<script is:inline>
+(function(){
+  var form = document.getElementById('contact-form');
+  var successMsg = document.getElementById('form-success');
+  if(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var data = new URLSearchParams(new FormData(form)).toString();
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data })
+        .then(function(){ form.style.display = 'none'; if(successMsg) successMsg.style.display = 'block'; })
+        .catch(function(){ form.submit(); });
+    });
+  }
+})();
 </script>
+</details>
