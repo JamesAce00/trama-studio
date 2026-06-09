@@ -1,134 +1,122 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ArticleCard from '../components/ArticleCard.astro';
-import RubricaGrid from '../components/RubricaGrid.astro';
-import NewsletterSection from '../components/NewsletterSection.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import NewsletterSection from '../../components/NewsletterSection.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const featuredPost = sortedPosts[0];
-const latestPosts = sortedPosts.slice(0, 6);
-const allGlossario = await getCollection('glossario');
-const featuredGlossario = allGlossario.slice(0, 3);
-const verdeRubriche = ['TRAME DI STORIA', 'DALLA FILIERA'];
-const featuredIsVerde = featuredPost ? verdeRubriche.includes(featuredPost.data.rubrica) : false;
-function readingTime(body) { return Math.ceil(body.split(/\s+/).length / 200); }
+
+const rubriche = [
+  'TUTTE',
+  'MATERIA PRIMA',
+  'DENTRO IL CAPO',
+  "DIETRO L'ETICHETTA",
+  'MITI DA SFATARE',
+  'GLOSSARIO TESSILE',
+  'SCELTE CONSAPEVOLI',
+  'TRAME DI STORIA',
+  'DALLA FILIERA',
+];
 ---
 
-<BaseLayout title="TRAMA Studio" description="Divulgazione sulla cultura tessile. Materiali, filiere, storia dei tessuti.">
+<BaseLayout title="Blog" description="Tutti gli articoli di TRAMA Studio sulla cultura tessile.">
 
-  <section data-hero style="background-color:#111111;color:#F5F1EA;padding:9rem 1.5rem 5rem;min-height:75vh;display:flex;align-items:center;position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(245,241,234,0.03) 60px,rgba(245,241,234,0.03) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(245,241,234,0.03) 60px,rgba(245,241,234,0.03) 61px);pointer-events:none;"></div>
-    <div style="width:100%;max-width:1200px;position:relative;">
-      <p class="occhiello reveal" style="color:#A65A3A;margin-bottom:2rem;">Divulgazione tessile</p>
-      <h1 class="reveal" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,8vw,7rem);line-height:1.0;letter-spacing:-0.025em;color:#F5F1EA;max-width:18ch;margin-bottom:1.5rem;">
-        Il linguaggio<br/><em style="font-style:italic;color:#D8C7B8;">nascosto</em><br/>dei tessuti
+  <section class="py-16 px-6 md:px-10 border-b" style="border-color: #D8C7B8; border-width: 0.5px;">
+    <div class="max-w-content mx-auto">
+      <p class="occhiello text-grigio mb-3">Archivio</p>
+      <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(36px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;">
+        Il blog
       </h1>
-      <p class="reveal" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:1.2rem;line-height:1.6;color:rgba(216,199,184,0.8);max-width:42ch;margin-bottom:2.5rem;">
-        Materiali, cultura, consapevolezza. Ogni capo ha una storia — impara a leggerla.
+      <p class="lead-text mt-4 max-w-lg">
+        Tutti gli articoli di TRAMA Studio, ordinati per data di pubblicazione.
       </p>
-      <div class="reveal">
-        <a href="/blog" class="occhiello" style="font-size:11px;color:#F5F1EA;border:1px solid rgba(245,241,234,0.35);padding:0.85rem 1.5rem;display:inline-block;">Esplora i materiali →</a>
+    </div>
+  </section>
+
+  <!-- Filtro rubriche -->
+  <section id="rubriche" class="py-6 px-6 md:px-10 border-b overflow-x-auto" style="border-color: #D8C7B8; border-width: 0.5px;">
+    <div class="max-w-content mx-auto">
+      <div class="flex gap-3 flex-nowrap md:flex-wrap" id="filter-container">
+        {rubriche.map((r, i) => {
+          const isVerde = r === 'TRAME DI STORIA' || r === 'DALLA FILIERA';
+          return (
+            <button
+              class={`filter-btn occhiello whitespace-nowrap px-4 py-2 border transition-colors duration-200 ${
+                i === 0
+                  ? 'bg-nero text-bianco border-nero'
+                  : 'bg-transparent text-grigio border-sabbia hover:border-nero hover:text-nero'
+              }`}
+              style={`font-size: 10px; ${isVerde ? '--accent: #2D5A27' : '--accent: #A65A3A'}`}
+              data-rubrica={r}
+            >
+              {r}
+            </button>
+          );
+        })}
       </div>
     </div>
   </section>
 
-  <div style="background-color:#A65A3A;overflow:hidden;padding:0.65rem 0;">
-    <div class="ticker-track">
-      {[...Array(2)].map(() => (
-        <span style="display:inline-flex;align-items:center;white-space:nowrap;">
-          {['MATERIA PRIMA','DENTRO IL CAPO',"DIETRO L'ETICHETTA",'MITI DA SFATARE','GLOSSARIO TESSILE','SCELTE CONSAPEVOLI','TRAME DI STORIA','DALLA FILIERA'].map(r => (
-            <span class="occhiello" style="font-size:9px;color:rgba(245,241,234,0.9);letter-spacing:0.18em;margin:0 1.5rem;">{r} <span style="margin-left:1rem;opacity:0.5;">·</span></span>
-          ))}
-        </span>
-      ))}
-    </div>
-  </div>
-
-  {featuredPost && (
-    <section class="reveal" style="background-color:#F5F1EA;border-bottom:1px solid #D8C7B8;padding:5rem 1.5rem;">
-      <div style="max-width:1200px;margin:0 auto;">
-        <p class="occhiello" style="color:#A9A29A;font-size:10px;margin-bottom:2.5rem;">In evidenza</p>
-        <div class="featured-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;">
-          <div style="position:relative;">
-            <span style="position:absolute;top:-1rem;right:0;font-family:'Cormorant Garamond',serif;font-size:clamp(6rem,12vw,10rem);font-weight:300;color:transparent;-webkit-text-stroke:1px #D8C7B8;line-height:1;pointer-events:none;user-select:none;">01</span>
-            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.5rem);line-height:1.1;letter-spacing:-0.02em;color:#111111;position:relative;z-index:1;">{featuredPost.data.title}</h2>
-          </div>
-          <div>
-            <span class={`occhiello block mb-4 ${featuredIsVerde?'rubrica-verde':'rubrica-terracotta'}`} style="font-size:10px;">{featuredPost.data.rubrica}</span>
-            <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:1.25rem;line-height:1.55;color:#5C4033;margin-bottom:2rem;max-width:40ch;">{featuredPost.data.lead}</p>
-            <a href={`/blog/${featuredPost.slug}`} class="occhiello" style="font-size:10px;color:#A65A3A;">Leggi l'articolo →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  )}
-
-  <section style="padding:5rem 1.5rem;">
-    <div style="max-width:1200px;margin:0 auto;">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:3rem;">
-        <div>
-          <p class="occhiello" style="color:#A9A29A;font-size:10px;margin-bottom:0.5rem;">Dal blog</p>
-          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:-0.01em;line-height:1.2;">Ultimi articoli</h2>
-        </div>
-        <a href="/blog" class="occhiello hidden md:block" style="font-size:10px;color:#A65A3A;">Tutti →</a>
-      </div>
-      <div class="border-grid stagger" style="grid-template-columns:repeat(3,1fr);">
-        {latestPosts.map((post, i) => (
-          <div class="border-grid-cell" style={i===0?"border-left:2px solid #A65A3A;":""}>
-            <ArticleCard title={post.data.title} rubrica={post.data.rubrica} lead={post.data.lead} date={post.data.date} slug={post.slug} readingTime={readingTime(post.body)} />
+  <!-- Articoli -->
+  <section class="py-4 px-6 md:px-10">
+    <div class="max-w-content mx-auto">
+      <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-x-16">
+        {sortedPosts.map(post => (
+          <div class="article-item" data-rubrica={post.data.rubrica}>
+            <ArticleCard
+              title={post.data.title}
+              rubrica={post.data.rubrica}
+              lead={post.data.lead}
+              date={post.data.date}
+              slug={post.slug}
+            />
           </div>
         ))}
       </div>
-    </div>
-  </section>
 
-  <section class="reveal" style="padding:5rem 1.5rem;border-top:1px solid #D8C7B8;border-bottom:1px solid #D8C7B8;">
-    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:3rem;align-items:start;">
-      <div style="width:1px;height:60px;background:#A65A3A;margin-top:0.5rem;"></div>
-      <blockquote style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.35;color:#111111;max-width:24ch;margin:0;border:none;padding:0;">
-        "Un tessuto non è solo un materiale. È un documento."
-      </blockquote>
-    </div>
-  </section>
-
-  <section style="background-color:#111111;padding:5rem 1.5rem;">
-    <div style="max-width:1200px;margin:0 auto;">
-      <div style="margin-bottom:3rem;" class="reveal">
-        <p class="occhiello" style="color:rgba(169,162,154,0.6);font-size:10px;margin-bottom:0.5rem;">Cosa trovi su TRAMA</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:-0.01em;line-height:1.2;color:#F5F1EA;">Le rubriche</h2>
+      <div id="no-results" class="hidden py-20 text-center">
+        <p class="didascalia">Nessun articolo in questa rubrica per ora.</p>
       </div>
-      <RubricaGrid />
     </div>
   </section>
 
+  <!-- Newsletter -->
   <NewsletterSection />
-
-  <section style="background-color:#F5F1EA;border-top:1px solid #D8C7B8;padding:5rem 1.5rem;">
-    <div style="max-width:1200px;margin:0 auto;">
-      <div style="margin-bottom:3rem;" class="reveal">
-        <p class="occhiello" style="color:#A9A29A;font-size:10px;margin-bottom:0.5rem;">Per capire meglio</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:-0.01em;line-height:1.2;">Glossario Tessile</h2>
-      </div>
-      <div class="border-grid stagger" style="grid-template-columns:repeat(3,1fr);">
-        {featuredGlossario.map(voce => (
-          <div class="border-grid-cell px-6 py-8">
-            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:#111111;margin-bottom:0.75rem;line-height:1.2;">{voce.data.termine}</h3>
-            <p style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:#5C4033;">{voce.data.definizione}</p>
-          </div>
-        ))}
-      </div>
-      <div class="mt-8 reveal">
-        <a href="/glossario" class="occhiello" style="font-size:11px;color:#A65A3A;">Consulta il glossario completo →</a>
-      </div>
-    </div>
-  </section>
 
 </BaseLayout>
 
-<style>
-  @media (max-width: 768px) {
-    .featured-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
-  }
-</style>
+<script is:inline>
+(function(){
+  var buttons = document.querySelectorAll('.filter-btn');
+  var items = document.querySelectorAll('.article-item');
+  var noResults = document.getElementById('no-results');
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var selected = btn.getAttribute('data-rubrica') || 'TUTTE';
+
+      buttons.forEach(function(b) {
+        b.classList.remove('bg-nero', 'text-bianco', 'border-nero');
+        b.classList.add('bg-transparent', 'text-grigio', 'border-sabbia');
+      });
+      btn.classList.remove('bg-transparent', 'text-grigio', 'border-sabbia');
+      btn.classList.add('bg-nero', 'text-bianco', 'border-nero');
+
+      var visible = 0;
+      items.forEach(function(item) {
+        if (selected === 'TUTTE' || item.getAttribute('data-rubrica') === selected) {
+          item.style.display = '';
+          visible++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', visible > 0);
+      }
+    });
+  });
+})();
+</script>
