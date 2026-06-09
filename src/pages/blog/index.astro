@@ -86,35 +86,27 @@ const rubriche = [
 
 </BaseLayout>
 
-<script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const items = document.querySelectorAll<HTMLElement>('.article-item');
-  const noResults = document.getElementById('no-results');
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const selected = btn.dataset.rubrica || 'TUTTE';
-
-      buttons.forEach(b => {
-        b.classList.remove('bg-nero', 'text-bianco', 'border-nero');
-        b.classList.add('bg-transparent', 'text-grigio', 'border-sabbia');
+<script is:inline>
+(function(){
+  var buttons = document.querySelectorAll('.filter-btn');
+  var items = document.querySelectorAll('.article-item');
+  var noResults = document.getElementById('no-results');
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var selected = btn.getAttribute('data-rubrica') || 'TUTTE';
+      buttons.forEach(function(b) {
+        b.classList.remove('bg-nero','text-bianco','border-nero');
+        b.classList.add('bg-transparent','text-grigio','border-sabbia');
       });
-      btn.classList.remove('bg-transparent', 'text-grigio', 'border-sabbia');
-      btn.classList.add('bg-nero', 'text-bianco', 'border-nero');
-
-      let visible = 0;
-      items.forEach(item => {
-        if (selected === 'TUTTE' || item.dataset.rubrica === selected) {
-          item.style.display = '';
-          visible++;
-        } else {
-          item.style.display = 'none';
-        }
+      btn.classList.remove('bg-transparent','text-grigio','border-sabbia');
+      btn.classList.add('bg-nero','text-bianco','border-nero');
+      var visible = 0;
+      items.forEach(function(item) {
+        if(selected==='TUTTE'||item.getAttribute('data-rubrica')===selected){item.style.display='';visible++;}
+        else{item.style.display='none';}
       });
-
-      if (noResults) {
-        noResults.classList.toggle('hidden', visible > 0);
-      }
+      if(noResults)noResults.classList.toggle('hidden',visible>0);
     });
   });
+})();
 </script>
