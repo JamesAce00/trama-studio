@@ -1,59 +1,26 @@
 ---
 const rubriche = [
-  {
-    nome: 'MATERIA PRIMA',
-    descrizione: 'Le fibre al centro. Cotone, lana, lino, seta, sintetici: da dove vengono, come si producono, cosa significano sul corpo.',
-    verde: false,
-  },
-  {
-    nome: 'DENTRO IL CAPO',
-    descrizione: 'Anatomia di un indumento. Costruzione, cuciture, fodere, rifiniture: tutto ciò che non si vede ma si sente.',
-    verde: false,
-  },
-  {
-    nome: 'DIETRO L\'ETICHETTA',
-    descrizione: 'Cosa c\'è scritto davvero su quel cartellino. Composizioni, certificazioni, paesi di produzione: imparare a leggere.',
-    verde: false,
-  },
-  {
-    nome: 'MITI DA SFATARE',
-    descrizione: 'Le credenze più diffuse sul tessile, smontate con rigore. Il cotone sempre traspirante, la lana che punge, il naturale sempre meglio.',
-    verde: false,
-  },
-  {
-    nome: 'GLOSSARIO TESSILE',
-    descrizione: 'Un vocabolario per capire. Termini tecnici spiegati senza semplificazioni eccessive, con contesto e precisione.',
-    verde: false,
-  },
-  {
-    nome: 'SCELTE CONSAPEVOLI',
-    descrizione: 'Come orientarsi negli acquisti con più criterio. Non greenwashing, non moralismo: strumenti concreti per decidere meglio.',
-    verde: false,
-  },
-  {
-    nome: 'TRAME DI STORIA',
-    descrizione: 'I tessuti come documenti storici. Commercio, potere, cultura e identità raccontati attraverso i fili.',
-    verde: true,
-  },
-  {
-    nome: 'DALLA FILIERA',
-    descrizione: 'Dentro i distretti, le manifatture, le aziende che fanno davvero i tessuti. Storie di luoghi e persone.',
-    verde: true,
-  },
+  { nome: 'MATERIA PRIMA', descrizione: 'Le fibre al centro. Cotone, lana, lino, seta, sintetici: da dove vengono, come si producono, cosa significano sul corpo.', verde: false },
+  { nome: 'DENTRO IL CAPO', descrizione: 'Anatomia di un indumento. Costruzione, cuciture, fodere, rifiniture: tutto ciò che non si vede ma si sente.', verde: false },
+  { nome: "DIETRO L'ETICHETTA", descrizione: "Cosa c'è scritto davvero su quel cartellino. Composizioni, certificazioni, paesi di produzione: imparare a leggere.", verde: false },
+  { nome: 'MITI DA SFATARE', descrizione: 'Le credenze più diffuse sul tessile, smontate con rigore. Il cotone sempre traspirante, la lana che punge, il naturale sempre meglio.', verde: false },
+  { nome: 'GLOSSARIO TESSILE', descrizione: 'Un vocabolario per capire. Termini tecnici spiegati senza semplificazioni eccessive, con contesto e precisione.', verde: false },
+  { nome: 'SCELTE CONSAPEVOLI', descrizione: 'Come orientarsi negli acquisti con più criterio. Non greenwashing, non moralismo: strumenti concreti per decidere meglio.', verde: false },
+  { nome: 'TRAME DI STORIA', descrizione: 'I tessuti come documenti storici. Commercio, potere, cultura e identità raccontati attraverso i fili.', verde: true },
+  { nome: 'DALLA FILIERA', descrizione: 'Dentro i distretti, le manifatture, le aziende che fanno davvero i tessuti. Storie di luoghi e persone.', verde: true },
 ];
 ---
-
-<div id="rubriche" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px" style="background-color: #D8C7B8;">
-  {rubriche.map(rubrica => (
-    <div class="bg-bianco p-6 hover:bg-nero hover:text-bianco transition-colors duration-300 group cursor-default">
-      <span
-        class={`occhiello block mb-3 ${rubrica.verde ? 'text-verde group-hover:text-verde' : 'text-terracotta group-hover:text-terracotta'}`}
-      >
-        {rubrica.nome}
-      </span>
-      <p class="text-sm leading-relaxed text-grigio group-hover:text-sabbia transition-colors duration-300" style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.6;">
-        {rubrica.descrizione}
-      </p>
+<div id="rubriche" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style="gap:1px;background-color:rgba(169,162,154,0.2);">
+  {rubriche.map((rubrica, i) => (
+    <div class="rubrica-cell group cursor-default" style="background-color:#111111;padding:2.25rem 1.75rem;position:relative;overflow:hidden;">
+      <span class="occhiello block mb-3" style="font-size:10px;color:#A65A3A;letter-spacing:0.18em;">{String(i+1).padStart(2,'0')}</span>
+      <p class="mb-2" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.15rem;line-height:1.3;color:#F5F1EA;">{rubrica.nome}</p>
+      <p style="font-family:'Inter',sans-serif;font-weight:300;font-size:12px;line-height:1.6;color:#A9A29A;">{rubrica.descrizione}</p>
+      <div class="rubrica-line" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:#A65A3A;transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);"></div>
     </div>
   ))}
 </div>
+<style>
+  .rubrica-cell:hover { background-color: #1d1d1d !important; }
+  .rubrica-cell:hover .rubrica-line { transform: scaleX(1); }
+</style>

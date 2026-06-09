@@ -9,152 +9,126 @@ const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const featuredPost = sortedPosts[0];
 const latestPosts = sortedPosts.slice(0, 6);
-
 const allGlossario = await getCollection('glossario');
 const featuredGlossario = allGlossario.slice(0, 3);
-
 const verdeRubriche = ['TRAME DI STORIA', 'DALLA FILIERA'];
 const featuredIsVerde = featuredPost ? verdeRubriche.includes(featuredPost.data.rubrica) : false;
+function readingTime(body) { return Math.ceil(body.split(/\s+/).length / 200); }
 ---
 
-<BaseLayout title="TRAMA Studio" description="Divulgazione sulla cultura tessile. Materiali, filiere, storia dei tessuti, etichette e qualità con rigore e autorevolezza.">
+<BaseLayout title="TRAMA Studio" description="Divulgazione sulla cultura tessile. Materiali, filiere, storia dei tessuti.">
 
-  <!-- BLOCCO 1 — Hero -->
-  <section class="bg-nero text-bianco py-24 md:py-36 px-6 md:px-10">
-    <div class="max-w-content mx-auto">
-      <p class="occhiello text-terracotta mb-8">Divulgazione tessile</p>
-      <h1 class="text-bianco mb-6 max-w-3xl" style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.02em;">
-        Il linguaggio nascosto dei tessuti
+  <section data-hero style="background-color:#111111;color:#F5F1EA;padding:9rem 1.5rem 5rem;min-height:75vh;display:flex;align-items:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(245,241,234,0.03) 60px,rgba(245,241,234,0.03) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(245,241,234,0.03) 60px,rgba(245,241,234,0.03) 61px);pointer-events:none;"></div>
+    <div style="max-width:1200px;margin:0 auto;position:relative;">
+      <p class="occhiello reveal" style="color:#A65A3A;margin-bottom:2rem;">Divulgazione tessile</p>
+      <h1 class="reveal" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,8vw,7rem);line-height:1.0;letter-spacing:-0.025em;color:#F5F1EA;max-width:18ch;margin-bottom:1.5rem;">
+        Il linguaggio<br/><em style="font-style:italic;color:#D8C7B8;">nascosto</em><br/>dei tessuti
       </h1>
-      <p class="max-w-xl" style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 20px; line-height: 1.6; color: #D8C7B8;">
-        Materiali, cultura, consapevolezza.
+      <p class="reveal" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:1.2rem;line-height:1.6;color:rgba(216,199,184,0.8);max-width:42ch;margin-bottom:2.5rem;">
+        Materiali, cultura, consapevolezza. Ogni capo ha una storia — impara a leggerla.
       </p>
-      <div class="mt-10">
-        <a
-          href="/blog"
-          class="occhiello text-bianco border border-bianco px-5 py-3 hover:bg-bianco hover:text-nero transition-colors duration-200"
-          style="font-size: 11px;"
-        >
-          Esplora i materiali
-        </a>
+      <div class="reveal">
+        <a href="/blog" class="occhiello" style="font-size:11px;color:#F5F1EA;border:1px solid rgba(245,241,234,0.35);padding:0.85rem 1.5rem;display:inline-block;">Esplora i materiali →</a>
       </div>
     </div>
   </section>
 
-  <!-- BLOCCO 2 — Articolo in evidenza -->
+  <div style="background-color:#A65A3A;overflow:hidden;padding:0.65rem 0;">
+    <div class="ticker-track">
+      {[...Array(2)].map(() => (
+        <span style="display:inline-flex;align-items:center;white-space:nowrap;">
+          {['MATERIA PRIMA','DENTRO IL CAPO',"DIETRO L'ETICHETTA",'MITI DA SFATARE','GLOSSARIO TESSILE','SCELTE CONSAPEVOLI','TRAME DI STORIA','DALLA FILIERA'].map(r => (
+            <span class="occhiello" style="font-size:9px;color:rgba(245,241,234,0.9);letter-spacing:0.18em;margin:0 1.5rem;">{r} <span style="margin-left:1rem;opacity:0.5;">·</span></span>
+          ))}
+        </span>
+      ))}
+    </div>
+  </div>
+
   {featuredPost && (
-    <section style="background-color: #F5F1EA; border-top: 0.5px solid #D8C7B8; border-bottom: 0.5px solid #D8C7B8;">
-      <div class="max-w-content mx-auto px-6 md:px-10 py-16 md:py-20">
-        <p class="occhiello text-grigio mb-8">In evidenza</p>
-        <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
-          <div class="md:w-1/4 flex-shrink-0">
-            <span class={`occhiello block ${featuredIsVerde ? 'text-verde' : 'text-terracotta'}`}>
-              {featuredPost.data.rubrica}
-            </span>
+    <section class="reveal" style="background-color:#F5F1EA;border-bottom:1px solid #D8C7B8;padding:5rem 1.5rem;">
+      <div style="max-width:1200px;margin:0 auto;">
+        <p class="occhiello" style="color:#A9A29A;font-size:10px;margin-bottom:2.5rem;">In evidenza</p>
+        <div class="featured-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;">
+          <div style="position:relative;">
+            <span style="position:absolute;top:-1rem;right:0;font-family:'Cormorant Garamond',serif;font-size:clamp(6rem,12vw,10rem);font-weight:300;color:transparent;-webkit-text-stroke:1px #D8C7B8;line-height:1;pointer-events:none;user-select:none;">01</span>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.5rem);line-height:1.1;letter-spacing:-0.02em;color:#111111;position:relative;z-index:1;">{featuredPost.data.title}</h2>
           </div>
-          <div class="md:flex-1">
-            <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -0.015em; color: #111111; margin-bottom: 1rem;">
-              {featuredPost.data.title}
-            </h2>
-            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 18px; line-height: 1.6; color: #5C4033; margin-bottom: 1.5rem; max-width: 60ch;">
-              {featuredPost.data.lead}
-            </p>
-            <a
-              href={`/blog/${featuredPost.slug}`}
-              class="occhiello text-terracotta hover:underline underline-offset-2"
-              style="font-size: 11px;"
-            >
-              Leggi →
-            </a>
+          <div>
+            <span class={`occhiello block mb-4 ${featuredIsVerde?'rubrica-verde':'rubrica-terracotta'}`} style="font-size:10px;">{featuredPost.data.rubrica}</span>
+            <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:1.25rem;line-height:1.55;color:#5C4033;margin-bottom:2rem;max-width:40ch;">{featuredPost.data.lead}</p>
+            <a href={`/blog/${featuredPost.slug}`} class="occhiello" style="font-size:10px;color:#A65A3A;">Leggi l'articolo →</a>
           </div>
         </div>
       </div>
     </section>
   )}
 
-  <!-- BLOCCO 3 — Le rubriche -->
-  <section class="py-20 px-6 md:px-10">
-    <div class="max-w-content mx-auto mb-12">
-      <p class="occhiello text-grigio mb-2">Cosa trovi su TRAMA</p>
-      <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 32px; letter-spacing: -0.01em; line-height: 1.2;">Le rubriche</h2>
-    </div>
-  </section>
-
-  <div class="max-w-content mx-auto px-6 md:px-10 pb-20">
-    <RubricaGrid />
-  </div>
-
-  <hr class="separator mx-6 md:mx-10" />
-
-  <!-- BLOCCO 4 — Ultimi articoli -->
-  <section class="py-20 px-6 md:px-10">
-    <div class="max-w-content mx-auto">
-      <div class="flex items-baseline justify-between mb-12">
+  <section style="padding:5rem 1.5rem;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:3rem;">
         <div>
-          <p class="occhiello text-grigio mb-2">Dal blog</p>
-          <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 32px; letter-spacing: -0.01em; line-height: 1.2;">Ultimi articoli</h2>
+          <p class="occhiello" style="color:#A9A29A;font-size:10px;margin-bottom:0.5rem;">Dal blog</p>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:-0.01em;line-height:1.2;">Ultimi articoli</h2>
         </div>
-        <a href="/blog" class="occhiello text-terracotta hover:underline underline-offset-2 hidden md:block" style="font-size: 10px;">
-          Tutti gli articoli →
-        </a>
+        <a href="/blog" class="occhiello hidden md:block" style="font-size:10px;color:#A65A3A;">Tutti →</a>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12">
-        {latestPosts.map(post => (
-          <ArticleCard
-            title={post.data.title}
-            rubrica={post.data.rubrica}
-            lead={post.data.lead}
-            date={post.data.date}
-            slug={post.slug}
-          />
-        ))}
-      </div>
-
-      <div class="mt-10 md:hidden">
-        <a href="/blog" class="occhiello text-terracotta hover:underline underline-offset-2" style="font-size: 10px;">
-          Tutti gli articoli →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOCCO 5 — Newsletter -->
-  <NewsletterSection />
-
-  <!-- BLOCCO 6 — Glossario in evidenza -->
-  <section style="background-color: #F5F1EA; border-top: 0.5px solid #D8C7B8;" class="py-20 px-6 md:px-10">
-    <div class="max-w-content mx-auto">
-      <div class="flex items-baseline justify-between mb-12">
-        <div>
-          <p class="occhiello text-grigio mb-2">Per capire meglio</p>
-          <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 32px; letter-spacing: -0.01em; line-height: 1.2;">Glossario Tessile</h2>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-px" style="background-color: #D8C7B8;">
-        {featuredGlossario.map(voce => (
-          <div class="bg-bianco px-6 py-8" style="background-color: #F5F1EA;">
-            <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: #111111; margin-bottom: 0.75rem; line-height: 1.2;">
-              {voce.data.termine}
-            </h3>
-            <p style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; line-height: 1.7; color: #5C4033; max-width: none;">
-              {voce.data.definizione}
-            </p>
+      <div class="border-grid stagger" style="grid-template-columns:repeat(3,1fr);">
+        {latestPosts.map((post, i) => (
+          <div class="border-grid-cell" style={i===0?"border-left:2px solid #A65A3A;":""}>
+            <ArticleCard title={post.data.title} rubrica={post.data.rubrica} lead={post.data.lead} date={post.data.date} slug={post.slug} readingTime={readingTime(post.body)} />
           </div>
         ))}
       </div>
+    </div>
+  </section>
 
-      <div class="mt-10">
-        <a
-          href="/glossario"
-          class="occhiello text-terracotta hover:underline underline-offset-2"
-          style="font-size: 11px;"
-        >
-          Consulta il glossario completo →
-        </a>
+  <section class="reveal" style="padding:5rem 1.5rem;border-top:1px solid #D8C7B8;border-bottom:1px solid #D8C7B8;">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:3rem;align-items:start;">
+      <div style="width:1px;height:60px;background:#A65A3A;margin-top:0.5rem;"></div>
+      <blockquote style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.35;color:#111111;max-width:24ch;margin:0;border:none;padding:0;">
+        "Un tessuto non è solo un materiale. È un documento."
+      </blockquote>
+    </div>
+  </section>
+
+  <section style="background-color:#111111;padding:5rem 1.5rem;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="margin-bottom:3rem;" class="reveal">
+        <p class="occhiello" style="color:rgba(169,162,154,0.6);font-size:10px;margin-bottom:0.5rem;">Cosa trovi su TRAMA</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:-0.01em;line-height:1.2;color:#F5F1EA;">Le rubriche</h2>
+      </div>
+      <RubricaGrid />
+    </div>
+  </section>
+
+  <NewsletterSection />
+
+  <section style="background-color:#F5F1EA;border-top:1px solid #D8C7B8;padding:5rem 1.5rem;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="margin-bottom:3rem;" class="reveal">
+        <p class="occhiello" style="color:#A9A29A;font-size:10px;margin-bottom:0.5rem;">Per capire meglio</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:-0.01em;line-height:1.2;">Glossario Tessile</h2>
+      </div>
+      <div class="border-grid stagger" style="grid-template-columns:repeat(3,1fr);">
+        {featuredGlossario.map(voce => (
+          <div class="border-grid-cell px-6 py-8">
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:#111111;margin-bottom:0.75rem;line-height:1.2;">{voce.data.termine}</h3>
+            <p style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:#5C4033;">{voce.data.definizione}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 reveal">
+        <a href="/glossario" class="occhiello" style="font-size:11px;color:#A65A3A;">Consulta il glossario completo →</a>
       </div>
     </div>
   </section>
 
 </BaseLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .featured-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  }
+</style>
