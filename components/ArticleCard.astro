@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  rubrica: string;
+  lead: string;
+  date: Date;
+  slug: string;
+  readingTime?: number;
+}
+const { title, rubrica, lead, slug, readingTime } = Astro.props;
+const verdeRubriche = ['TRAME DI STORIA', 'DALLA FILIERA'];
+const isVerde = verdeRubriche.includes(rubrica);
+---
+<article class="group" style="display:flex;flex-direction:column;height:100%;">
+  <a href={`/blog/${slug}`} class="block p-6 h-full" style="display:flex;flex-direction:column;flex:1;">
+    <span class={`occhiello block mb-4 ${isVerde?'rubrica-verde':'rubrica-terracotta'}`}>{rubrica}</span>
+    <h3 class="card-title mb-3" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;line-height:1.25;letter-spacing:-0.01em;color:#111111;transition:color 0.2s;">{title}</h3>
+    <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:16px;line-height:1.55;color:#5C4033;flex:1;margin-bottom:1.25rem;">{lead}</p>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:0.75rem;border-top:0.5px solid #D8C7B8;">
+      {readingTime && <span class="didascalia">{readingTime} min</span>}
+      <span class="occhiello" style="font-size:10px;letter-spacing:0.12em;color:#A65A3A;margin-left:auto;">Leggi →</span>
+    </div>
+  </a>
+</article>
+<style>
+  article:hover .card-title { color: #A65A3A; }
+  article:hover { background-color: rgba(216,199,184,0.18); }
+</style>
