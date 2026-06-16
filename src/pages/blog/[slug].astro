@@ -4,136 +4,85 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  return posts.map(post => ({ params: { slug: post.slug }, props: { post } }));
 }
 
 const { post } = Astro.props;
 const { Content } = await post.render();
-
 const verdeRubriche = ['TRAME DI STORIA', 'DALLA FILIERA'];
 const isVerde = verdeRubriche.includes(post.data.rubrica);
-
 const wordCount = post.body.split(/\s+/).filter(Boolean).length;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+const tocHeadings = post.body.split('\n').filter(line => line.match(/^## /)).map(line => {
+  const text = line.replace(/^## /, '').replace(/\*\*/g, '').trim();
+  const id = text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+  return { text, id };
+});
+const formattedDate = post.data.date.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
 <BaseLayout title={post.data.title} description={post.data.lead}>
 
+  <div class="reading-progress" id="reading-progress"></div>
+
   <article>
-    <!-- Back link -->
-    <div class="px-6 md:px-10 pt-10 pb-6">
-      <div class="max-w-content mx-auto">
-        <a
-          href="/blog"
-          class="didascalia text-grigio hover:text-terracotta transition-colors"
-          style="letter-spacing: 0.04em;"
-        >
-          ← Torna al blog
-        </a>
-      </div>
-    </div>
-
-    <!-- Header articolo -->
-    <header class="px-6 md:px-10 pb-12 border-b" style="border-color: #D8C7B8; border-width: 0.5px;">
-      <div class="max-w-editorial mx-auto">
-        <span class={`occhiello block mb-4 ${isVerde ? 'text-verde' : 'text-terracotta'}`}>
-          {post.data.rubrica}
-        </span>
-
-        <h1 class="text-nero mb-6">
-          {post.data.title}
-        </h1>
-
-        <div class="flex items-center gap-4 mb-8">
-          <span class="didascalia">Tempo di lettura: {readingTime} min</span>
-          {post.data.autore && (
-            <>
-              <span class="didascalia" style="color: #D8C7B8;">—</span>
-              <span class="didascalia">{post.data.autore}</span>
-            </>
-          )}
+    <header style="padding:7rem 1.5rem 4rem;border-bottom:1px solid #D8C7B8;background-color:#F5F1EA;">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;">
+          <a href="/blog" class="didascalia" style="color:#A9A29A;">← Blog</a>
+          <span style="width:1px;height:12px;background:#D8C7B8;"></span>
+          <span class={`occhiello ${isVerde?'rubrica-verde':'rubrica-terracotta'}`} style="font-size:10px;">{post.data.rubrica}</span>
+          <span style="width:1px;height:12px;background:#D8C7B8;"></span>
+          <span class="didascalia" style="color:#A9A29A;">{readingTime} min di lettura</span>
         </div>
-
-        <p class="lead-text">
-          {post.data.lead}
-        </p>
+        <div class="article-header-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;">
+          <div>
+            <h1 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.25rem,5vw,4rem);line-height:1.05;letter-spacing:-0.025em;color:#111111;margin:0;">{post.data.title}</h1>
+          </div>
+          <div>
+            <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:1.3rem;line-height:1.5;color:#5C4033;margin-bottom:2rem;">{post.data.lead}</p>
+            <div style="border-top:0.5px solid #D8C7B8;padding-top:1rem;display:flex;align-items:center;justify-content:space-between;">
+              <div class="didascalia" style="color:#A9A29A;">{formattedDate}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
 
-    <!-- Corpo articolo -->
-    <div class="px-6 md:px-10 py-14">
-      <div class="max-w-editorial mx-auto prose-editorial">
-        <Content />
-      </div>
+    <div class="article-body-grid" style="max-width:1200px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:200px 680px 1fr;gap:4rem;align-items:start;">
+      {tocHeadings.length > 0 ? (
+        <aside id="toc-sidebar" style="position:sticky;top:5.5rem;align-self:start;">
+          <p class="occhiello" style="font-size:9px;color:#A9A29A;letter-spacing:0.18em;margin-bottom:1rem;">In questo articolo</p>
+          <nav>
+            {tocHeadings.map(h => (
+              <a href={`#${h.id}`} class="toc-link" data-toc-id={h.id} style="display:block;font-family:'Inter',sans-serif;font-weight:300;font-size:12px;line-height:1.5;color:#A9A29A;padding:0.35rem 0.75rem;border-left:1px solid #D8C7B8;margin-bottom:0.25rem;text-decoration:none;">{h.text}</a>
+            ))}
+          </nav>
+        </aside>
+      ) : <div></div>}
+      <div class="prose-editorial" id="article-content"><Content /></div>
+      <div></div>
     </div>
 
-    <!-- Footer articolo -->
-    <footer class="px-6 md:px-10 py-10 border-t" style="border-color: #D8C7B8; border-width: 0.5px;">
-      <div class="max-w-editorial mx-auto flex justify-between items-center">
-        <a
-          href="/blog"
-          class="occhiello text-grigio hover:text-terracotta transition-colors"
-          style="font-size: 10px;"
-        >
-          ← Tutti gli articoli
-        </a>
-        <span class={`occhiello ${isVerde ? 'text-verde' : 'text-terracotta'}`} style="font-size: 10px;">
-          {post.data.rubrica}
-        </span>
+    <footer style="border-top:1px solid #D8C7B8;padding:2.5rem 1.5rem;">
+      <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
+        <a href="/blog" class="occhiello" style="font-size:10px;color:#A9A29A;">← Tutti gli articoli</a>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#D8C7B8;">✦</span>
+        <span class={`occhiello ${isVerde?'rubrica-verde':'rubrica-terracotta'}`} style="font-size:10px;">{post.data.rubrica}</span>
       </div>
     </footer>
   </article>
 
-  <!-- Newsletter block -->
-  <div class="sib-form" style="text-align:center; background-color:#111111;">
+  <div class="sib-form" style="text-align:center;background-color:#111111;">
     <div id="sib-form-container" class="sib-form-container">
-      <div id="error-message" class="sib-form-message-panel" style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px; max-width:540px;">
-        <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-          <span class="sib-form-message-panel__inner-text">La tua iscrizione non può essere convalidata.</span>
-        </div>
-      </div>
-      <div id="success-message" class="sib-form-message-panel" style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#085229; background-color:#e7faf0; border-color:#13ce66; border-radius:3px; max-width:540px;">
-        <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-          <span class="sib-form-message-panel__inner-text">Benvenuto in TRAMA Studio. Controlla la tua casella email.</span>
-        </div>
-      </div>
-      <div id="sib-container" class="sib-container--large sib-container--vertical" style="max-width:540px; text-align:center; background-color:rgba(26,26,26,1); border-width:1px; border-style:solid; border-color:#d8c7b8; border-radius:3px; direction:ltr">
+      <div id="error-message" class="sib-form-message-panel" style="font-family:Helvetica,sans-serif;font-size:16px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;max-width:540px;"><div class="sib-form-message-panel__text sib-form-message-panel__text--center"><span class="sib-form-message-panel__inner-text">La tua iscrizione non può essere convalidata.</span></div></div>
+      <div id="success-message" class="sib-form-message-panel" style="font-family:Helvetica,sans-serif;font-size:16px;text-align:left;color:#085229;background-color:#e7faf0;border-color:#13ce66;border-radius:3px;max-width:540px;"><div class="sib-form-message-panel__text sib-form-message-panel__text--center"><span class="sib-form-message-panel__inner-text">Benvenuto in TRAMA Studio. Controlla la tua casella email.</span></div></div>
+      <div id="sib-container" class="sib-container--large sib-container--vertical" style="max-width:540px;text-align:center;background-color:rgba(26,26,26,1);border-width:1px;border-style:solid;border-color:#d8c7b8;border-radius:3px;direction:ltr">
         <form id="sib-form" method="POST" action="https://1dea74ff.sibforms.com/serve/MUIFAOl2Hs03VOoSQ-Y2nBj7rO8jLw4AB-7mPiIcghwFn5GuwXOygBOCIDcCk0Ad7e5rcpDjZSWSHNPfPBR7UrvzIlM19JkAc7Dk9Is07ptDJdNQwJNJxng3l-vfQHrDHZl0qTwmP-WEMFZSZHv8inxq8umJnupMNiqujxaJPK5OAJGtucke9ry3IEzxPnYkGlq9YDvW-aHImTKB_A==" data-type="subscription">
-          <div style="padding:8px 0;">
-            <div class="sib-form-block" style="font-family:Garamond,serif; font-size:32px; font-weight:700; text-align:left; color:#f5f1ea; background-color:transparent;">
-              <p>Il linguaggio nascosto dei tessuti</p>
-            </div>
-          </div>
-          <div style="padding:8px 0;">
-            <div class="sib-form-block" style="font-family:Georgia,serif; font-size:16px; text-align:left; color:#a9a29a; background-color:transparent;">
-              <div class="sib-text-form-block">
-                <p>Ogni settimana, un materiale spiegato bene. Gratis, niente spam, disiscriviti quando vuoi.</p>
-              </div>
-            </div>
-          </div>
-          <div style="padding:8px 0;">
-            <div class="sib-input sib-form-block">
-              <div class="form__entry entry_block">
-                <div class="form__label-row">
-                  <label class="entry__label" style="font-weight:700; font-family:Georgia,serif; font-size:16px; color:#f5f1ea;" for="EMAIL" data-required="*">Il tuo indirizzo email</label>
-                  <div class="entry__field">
-                    <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="EMAIL" data-required="true" required />
-                  </div>
-                </div>
-                <label class="entry__error entry__error--primary" style="font-family:Helvetica,sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;"></label>
-              </div>
-            </div>
-          </div>
-          <div style="padding:8px 0;">
-            <div class="sib-form-block" style="text-align:left;">
-              <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-family:Georgia,serif; font-size:16px; font-weight:700; color:#f5f1ea; background-color:#a65a3a; border-width:0px; border-radius:3px;" form="sib-form" type="submit">
-                ISCRIVITI
-              </button>
-            </div>
-          </div>
+          <div style="padding:8px 0;"><div class="sib-form-block" style="font-family:Garamond,serif;font-size:32px;font-weight:700;text-align:left;color:#f5f1ea;background-color:transparent;"><p>Il linguaggio nascosto dei tessuti</p></div></div>
+          <div style="padding:8px 0;"><div class="sib-form-block" style="font-family:Georgia,serif;font-size:16px;text-align:left;color:#a9a29a;background-color:transparent;"><div class="sib-text-form-block"><p>Ogni settimana, un materiale spiegato bene. Gratis, niente spam, disiscriviti quando vuoi.</p></div></div></div>
+          <div style="padding:8px 0;"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" style="font-weight:700;font-family:Georgia,serif;font-size:16px;color:#f5f1ea;" for="EMAIL" data-required="*">Il tuo indirizzo email</label><div class="entry__field"><input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="EMAIL" data-required="true" required /></div></div><label class="entry__error entry__error--primary" style="font-family:Helvetica,sans-serif;font-size:16px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label></div></div></div>
+          <div style="padding:8px 0;"><div class="sib-form-block" style="text-align:left;"><button class="sib-form-block__button sib-form-block__button-with-loader" style="font-family:Georgia,serif;font-size:16px;font-weight:700;color:#f5f1ea;background-color:#a65a3a;border-width:0px;border-radius:3px;" form="sib-form" type="submit">ISCRIVITI</button></div></div>
           <input type="text" name="email_address_check" value="" class="input--hidden">
           <input type="hidden" name="locale" value="it">
         </form>
@@ -142,3 +91,39 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
   </div>
 
 </BaseLayout>
+
+<style>
+  @media (max-width: 900px) {
+    .article-header-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .article-body-grid { grid-template-columns: 1fr !important; }
+    .article-body-grid aside { display: none; }
+  }
+  .toc-link.active { color: #111111 !important; border-left-color: #A65A3A !important; }
+</style>
+
+<script is:inline>
+(function(){
+  var bar=document.getElementById('reading-progress');
+  var content=document.getElementById('article-content');
+  if(bar&&content){
+    window.addEventListener('scroll',function(){
+      var rect=content.getBoundingClientRect();
+      var pct=Math.min(100,Math.max(0,(-rect.top/content.offsetHeight)*100));
+      bar.style.width=pct+'%';
+    },{passive:true});
+  }
+  var tocLinks=document.querySelectorAll('.toc-link');
+  if(tocLinks.length){
+    var headings=document.querySelectorAll('#article-content h2');
+    if(headings.length){
+      headings.forEach(function(h){
+        new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting)tocLinks.forEach(function(l){l.classList.toggle('active',l.getAttribute('data-toc-id')===e.target.id);});
+          });
+        },{rootMargin:'-64px 0px -60% 0px',threshold:0}).observe(h);
+      });
+    }
+  }
+})();
+</script>

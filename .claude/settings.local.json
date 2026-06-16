@@ -10,7 +10,11 @@
       "Bash(node *)",
       "Bash(npm show *)",
       "Bash(mv /Users/jack/Desktop/trama-studio/src/content/blog/il-cotone-che-non-respira.md /Users/jack/Desktop/trama-studio/src/content/blog/il-cotone-la-fibra-piu-comprata-al-mondo.md)",
-      "Bash(mv /Users/jack/Desktop/trama-studio/src/content/blog/lana-merino-non-prude.md /Users/jack/Desktop/trama-studio/src/content/blog/come-leggere-unetichetta-tessile.md)"
+      "Bash(mv /Users/jack/Desktop/trama-studio/src/content/blog/lana-merino-non-prude.md /Users/jack/Desktop/trama-studio/src/content/blog/come-leggere-unetichetta-tessile.md)",
+      "Bash(ps -Ao pid,ppid,%cpu,etime,command)",
+      "Bash(ps -Ao pid,%cpu,etime,rss,command)",
+      "Bash(pkill -f \"astro build\")",
+      "Bash(ASTRO_TELEMETRY_DISABLED=1 CI=1 npm run *)"
     ]
   }
 }
