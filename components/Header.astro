@@ -1,0 +1,62 @@
+---
+const navLinks = [
+  { href: '/blog', label: 'Rubriche' },
+  { href: '/glossario', label: 'Glossario' },
+  { href: '/about', label: 'Chi siamo' },
+];
+---
+
+<header id="main-nav" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 transition-all duration-400" style="height: 64px;">
+  <a href="/" class="flex flex-col leading-none" aria-label="TRAMA Studio">
+    <span class="logo-trama text-xl nav-wordmark" style="transition: color 0.35s;">TRAMA</span>
+    <span class="logo-studio text-[9px] mt-[1px] nav-submark" style="transition: color 0.35s;">studio</span>
+  </a>
+  <nav class="hidden md:flex items-center gap-8">
+    {navLinks.map(link => (
+      <a href={link.href} class="nav-link occhiello relative" style="font-size: 11px;">
+        {link.label}
+        <span class="nav-underline" style="position:absolute;bottom:-3px;left:0;width:0;height:1px;background:#A65A3A;transition:width 0.3s cubic-bezier(0.22,1,0.36,1);"></span>
+      </a>
+    ))}
+    <a href="/newsletter" class="occhiello" style="font-size:11px;color:#A65A3A;">Newsletter →</a>
+  </nav>
+  <button id="menu-toggle" class="md:hidden text-2xl leading-none p-2 nav-wordmark" aria-label="Apri menu" type="button" style="transition:color 0.35s;">☰</button>
+</header>
+
+<div id="mobile-menu" class="hidden fixed top-16 left-0 right-0 z-40 flex-col py-6 px-6 space-y-5" style="background-color:#111111;">
+  <a href="/blog" class="block occhiello" style="color:#F5F1EA;font-size:11px;">Rubriche</a>
+  <a href="/glossario" class="block occhiello" style="color:#F5F1EA;font-size:11px;">Glossario</a>
+  <a href="/about" class="block occhiello" style="color:#F5F1EA;font-size:11px;">Chi siamo</a>
+  <a href="/newsletter" class="block occhiello" style="color:#A65A3A;font-size:11px;">Newsletter →</a>
+</div>
+
+<style>
+  #main-nav .nav-wordmark { color: #F5F1EA; }
+  #main-nav .nav-submark { color: rgba(245,241,234,0.5); }
+  #main-nav .nav-link { color: rgba(245,241,234,0.65); }
+  #main-nav.scrolled { background: rgba(245,241,234,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(216,199,184,0.5); }
+  #main-nav.scrolled .nav-wordmark { color: #111111; }
+  #main-nav.scrolled .nav-submark { color: #A9A29A; }
+  #main-nav.scrolled .nav-link { color: #A9A29A; }
+  #main-nav.scrolled button.nav-wordmark { color: #111111; }
+  #main-nav .nav-link:hover .nav-underline { width: 100% !important; }
+</style>
+
+<script is:inline>
+(function(){
+  var nav=document.getElementById('main-nav');
+  var toggle=document.getElementById('menu-toggle');
+  var menu=document.getElementById('mobile-menu');
+  var hasHero=!!document.querySelector('[data-hero]');
+  if(!hasHero) nav.classList.add('scrolled');
+  window.addEventListener('scroll',function(){if(hasHero)nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+  if(toggle&&menu){
+    toggle.addEventListener('click',function(){
+      var open=!menu.classList.contains('hidden');
+      if(open){menu.classList.add('hidden');menu.classList.remove('flex');toggle.textContent='☰';}
+      else{menu.classList.remove('hidden');menu.classList.add('flex');toggle.textContent='✕';}
+    });
+    menu.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){menu.classList.add('hidden');menu.classList.remove('flex');toggle.textContent='☰';});});
+  }
+})();
+</script>
